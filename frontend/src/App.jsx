@@ -1,6 +1,7 @@
 import React from 'react';
-import PhotoListItem from './components/PhotoListItem';
 import './App.scss';
+import PhotoListItem from './components/PhotoListItem';
+import PhotoList from '../src/components/PhotoList';
 
 const sampleDataForPhotoListItem = {
   id: "1",
@@ -14,7 +15,8 @@ const sampleDataForPhotoListItem = {
 };
 
 const App = () => {
-  return(
+
+  return (
   <div className="App">
     <PhotoListItem 
       id={sampleDataForPhotoListItem.id}
@@ -25,6 +27,7 @@ const App = () => {
     />
   </div>
   )
+
 };
 
 export default App;
