@@ -14,6 +14,7 @@ const sampleDataForPhotoListItem = {
 };
 
 const App = () => {
+  return(
   <div className="App">
     <PhotoListItem 
       id={sampleDataForPhotoListItem.id}
@@ -23,6 +24,7 @@ const App = () => {
       profile={sampleDataForPhotoListItem.profile}
     />
   </div>
+  )
 };
 
 export default App;
