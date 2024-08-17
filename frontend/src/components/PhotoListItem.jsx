@@ -3,6 +3,7 @@ import App from "../App.jsx";
 
 import "../styles/PhotoListItem.scss";
 
+
 const PhotoListItem = ({ id, location, imageSource, username, profile }) => {
   return (
     <div className="photo-list__item">
