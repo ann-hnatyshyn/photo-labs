@@ -56,21 +56,23 @@ const sampleDataForPhotoList = [
   },
 ];
 
-const photos = [...Array(3)];
-const photoItems = photos.map((photo, i) => {
-  < PhotoListItem 
-    key={i}
-    id={sampleDataForPhotoListItem.id}
-    location={sampleDataForPhotoListItem.location}
-    imageSource={sampleDataForPhotoListItem.imageSource}
-    username={sampleDataForPhotoListItem.username}
-    profile={sampleDataForPhotoListItem.profile}
-  />
+
+const PhotoList = () => {
   return (
-  <div className="photo-list">
-    {photoItems}
-  </div>
+    <div className="photo-list">
+      {sampleDataForPhotoList.map((photo) => (
+        <PhotoListItem
+          key={photo.id}
+          id={photo.id}
+          location={photo.location}
+          imageSource={photo.urls.regular}
+          username={photo.user.username}
+          profile={photo.user.profile}
+        />
+      ))}
+    </div>
   );
-});
+};
+
 
 export default PhotoList;

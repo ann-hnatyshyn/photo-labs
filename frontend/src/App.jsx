@@ -2,6 +2,7 @@ import React from 'react';
 import './App.scss';
 import PhotoListItem from './components/PhotoListItem';
 import PhotoList from '../src/components/PhotoList';
+import PhotoFavButton from 'components/PhotoFavButton';
 
 const sampleDataForPhotoListItem = {
   id: "1",
@@ -29,5 +30,6 @@ const App = () => {
   )
 
 };
+
 
 export default App;
