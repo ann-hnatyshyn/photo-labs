@@ -3,6 +3,7 @@ import App from "../App.jsx";
 import PhotoList from "./PhotoList.jsx";
 import PhotoFavButton from "./PhotoFavButton.jsx";
 import "../styles/PhotoListItem.scss";
+import FavIcon from "./FavIcon.jsx";
 
 
 const PhotoListItem = ({ id, location, imageSource, username, profile }) => {

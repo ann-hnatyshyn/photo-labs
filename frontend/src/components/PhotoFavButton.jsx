@@ -4,17 +4,17 @@ import '../styles/PhotoFavButton.scss';
 
 
 function PhotoFavButton() {
-  const [like, setLike] = useState("inactive");
+  const [isLiked, setIsLiked] = useState(false);
 
   const handleClick = () => {
-    setLike(like === "inactive" ? "active" : "inactive")
+    setIsLiked(prev => !prev);
   };
 
   return (
   <div className="photo-list__fav-icon">
     <div className="photo-list__fav-icon-svg">
       <button onClick={handleClick}>
-      <FavIcon liked={like}/>
+        <FavIcon liked={isLiked}/>
       </button>
     </div>
   </div>
