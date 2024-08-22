@@ -4,11 +4,10 @@ import '../styles/PhotoFavButton.scss';
 
 
 function PhotoFavButton() {
-
   const [like, setLike] = useState("inactive");
+
   const handleClick = () => {
-    setLike(like);
-    console.log(handleClick);
+    setLike(like === "inactive" ? "active" : "inactive")
   };
 
   return (

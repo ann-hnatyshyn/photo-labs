@@ -1,6 +1,7 @@
 import React from "react";
 import App from "../App.jsx";
 import PhotoList from "./PhotoList.jsx";
+import PhotoFavButton from "./PhotoFavButton.jsx";
 import "../styles/PhotoListItem.scss";
 
 
@@ -21,6 +22,8 @@ const PhotoListItem = ({ id, location, imageSource, username, profile }) => {
 
   return (
     <div className="photo-list__item">
+
+    <div className="photo-list__fav-icon"></div>
 
     <img className= "photo-list__image" src={imageSource} alt="Photo" />
     
