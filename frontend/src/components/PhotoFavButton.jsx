@@ -11,11 +11,13 @@ function PhotoFavButton() {
   };
 
   return (
-    <div className="photo-list__fav-icon">
-      <div className="photo-list__fav-icon-svg">
-      <button onClick={handleClick}></button>
-      </div>
+  <div className="photo-list__fav-icon">
+    <div className="photo-list__fav-icon-svg">
+      <button onClick={handleClick}>
+      <FavIcon liked={like}/>
+      </button>
     </div>
+  </div>
   );
 }
 

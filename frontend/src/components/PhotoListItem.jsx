@@ -23,7 +23,7 @@ const PhotoListItem = ({ id, location, imageSource, username, profile }) => {
   return (
     <div className="photo-list__item">
 
-    <div className="photo-list__fav-icon"></div>
+    <PhotoFavButton />
 
     <img className= "photo-list__image" src={imageSource} alt="Photo" />
     
