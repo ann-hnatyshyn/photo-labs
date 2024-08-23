@@ -1,7 +1,7 @@
 import React from "react";
 import "../styles/TopicList.scss";
 import TopicListItem from "./TopicListItem";
-import topics from "../mocks/topics"
+
 
 
 const TopicList = (topic) => {
@@ -10,6 +10,7 @@ const TopicList = (topic) => {
       {topics.map((topic) => (
         <TopicListItem
         key={topic.id}
+        topic={topic}
         id={topic.id}
         slug={topic.slug}
         title={topic.title} 
