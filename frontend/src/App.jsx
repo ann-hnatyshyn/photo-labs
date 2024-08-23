@@ -9,16 +9,30 @@ import FavIcon from 'components/FavIcon';
 
 const App = () => {
 
-  const [fav, setFav] = useState(0);
+  const [favourites, setFavourites] = useState([]);
 
-  const handleClick = () => {
-      setFav(fav + 1);
-  }
+  const toggleFavourite = (photo) => {
+    setFavourites((prevFavourites) => {
+
+      if (prevFavourites.some(fav => fav.id === photo.id)) {
+        return prevFavourites.filter(fav => fav.id !== photo.id);
+      } else {
+        return [...prevFavourites, photo];
+      }
+    });
+  };
 
   return (
   <div className="App">
-    <HomeRoute topics={topics} photos={photos}/>
-    <FavIcon onClick={handleClick}/>
+    <HomeRoute 
+    topics={topics}
+    photos={photos}
+    favourites={favourites}
+    toggleFavourite={toggleFavourite}
+    />
+    <FavIcon 
+    toggleFavourite={toggleFavourite}
+    />
   </div>
   )
 };
