@@ -30,9 +30,7 @@ const App = () => {
     favourites={favourites}
     toggleFavourite={toggleFavourite}
     />
-    <FavIcon 
-    toggleFavourite={toggleFavourite}
-    />
+    <FavIcon/>
   </div>
   )
 };
