@@ -5,7 +5,9 @@ import "../styles/TopicListItem.scss";
 function TopicListItem({title}) {
   return (
     <div className="topic-list-item">
-      <span>{title}</span>
+      <span>
+        {title}
+      </span>
     </div>
   );
 }
