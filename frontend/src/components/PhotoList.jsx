@@ -2,8 +2,7 @@ import React from "react";
 import "../styles/PhotoList.scss";
 import PhotoListItem from "./PhotoListItem";
 
-
-const PhotoList = ({photos, favourites, toggleFavourite}) => {
+const PhotoList = ({ photos, favourites, toggleFavourite, onPhotoClick }) => {
   return (
     <div className="photo-list">
       {photos.map((photo) => (
@@ -15,13 +14,13 @@ const PhotoList = ({photos, favourites, toggleFavourite}) => {
           imageSource={photo.urls.regular}
           username={photo.user.username}
           profile={photo.user.profile}
-          favourites={photo.favourites}
-          toggleFavourite={photo.toggleFavourite}
+          favourites={favourites} // Corrected to pass full favourites list
+          toggleFavourite={toggleFavourite}
+          onPhotoClick={onPhotoClick} // Pass down the onPhotoClick handler
         />
       ))}
-      </div>
+    </div>
   );
 };
-
 
 export default PhotoList;

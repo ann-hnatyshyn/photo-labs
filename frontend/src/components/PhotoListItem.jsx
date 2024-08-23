@@ -1,29 +1,22 @@
 import React from "react";
-import App from "../App.jsx";
-import PhotoList from "./PhotoList.jsx";
-import PhotoFavButton from "./PhotoFavButton.jsx";
 import "../styles/PhotoListItem.scss";
 
+const PhotoListItem = ({ photo, id, location, imageSource, username, profile, favourites, toggleFavourite, onPhotoClick }) => {
 
-const PhotoListItem = ({ id, location, imageSource, username, profile, favourites, toggleFavourite }) => {
+  const handlePhotoClick = () => {
+    onPhotoClick(photo); // Passing the photo object to the handler
+  };
 
   return (
-    <div className="photo-list__item">
-
-    <PhotoFavButton/>
-
-    <img className= "photo-list__image" src={imageSource} alt="Photo" />
-    <div>
-    <img className= "photo-list__user-profile" src={profile} alt="Profile" />
-    </div>
-
-    <div>
-      <p>{username}</p>
-      <p>{location.city}, {location.country}</p>
-    </div>
-    
+    <div className="photo-list-item" onClick={handlePhotoClick}>
+      <img src={imageSource} alt={username} />
+      <div>
+        <p>{username}</p>
+        <p>{location}</p>
+      </div>
+      <button onClick={() => toggleFavourite(photo)}>Favourite</button>
     </div>
   );
-}
+};
 
 export default PhotoListItem;
