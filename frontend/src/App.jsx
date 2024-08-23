@@ -5,7 +5,7 @@ import photos from 'mocks/photos';
 import topics from 'mocks/topics';
 import { useState } from 'react';
 import FavIcon from 'components/FavIcon';
-
+import PhotoDetailsModal from 'routes/PhotoDetailsModal';
 
 const App = () => {
 
@@ -30,7 +30,11 @@ const App = () => {
     favourites={favourites}
     toggleFavourite={toggleFavourite}
     />
-    <FavIcon/>
+    
+    <div className="photo-details-modal">
+    <PhotoDetailsModal/>
+    </div>
+
   </div>
   )
 };
