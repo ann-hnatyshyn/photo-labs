@@ -5,20 +5,16 @@ import PhotoFavButton from "./PhotoFavButton.jsx";
 import "../styles/PhotoListItem.scss";
 
 
-const PhotoListItem = ({ id, location, imageSource, username, profile }) => {
+const PhotoListItem = ({ id, location, imageSource, username, profile, favourites, toggleFavourite }) => {
 
   return (
     <div className="photo-list__item">
 
-    <PhotoFavButton
-    favourites={favourites}
-    toggleFavourite={toggleFavourite}
-    />
+    <PhotoFavButton/>
 
     <img className= "photo-list__image" src={imageSource} alt="Photo" />
-    
     <div>
-      <img className= "photo-list__user-profile" src={profile} alt="Profile" />
+    <img className= "photo-list__user-profile" src={profile} alt="Profile" />
     </div>
 
     <div>
