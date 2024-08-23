@@ -7,16 +7,12 @@ import TopicList from 'components/TopicList';
 
 
 const App = () => {
-
   return (
   <div className="App">
-     {/* { Array.from(Array(3)).map((_, index) => <PhotoListItem key={index}/>) } */}
-    <PhotoList/>
     <TopicList/>
+    <PhotoList/>
   </div>
   )
-
 };
-
 
 export default App;

@@ -8,13 +8,12 @@ const sampleDataForTopicListItem = {
   label: "Nature",
 };
 
-const TopicListItem = (topic) => {
-
+function TopicListItem({ title }) {
   return (
-    <div className="topic-list__item">
-      <select classname="topic-list__item span"></select>
+    <div className="topic-list-item">
+      <span>{title}</span>
     </div>
   );
-};
+}
 
 export default TopicListItem;

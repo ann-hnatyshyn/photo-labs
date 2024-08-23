@@ -25,11 +25,11 @@ const TopicList = (topic) => {
   return (
     <div className="topic-list__item">
       {sampleDataForTopicList.map((topic) => (
-        <topic-list__item
-          key={topic.id}
-          id={topic.id}
-          slug={topic.slug}
-          title={topic.title}
+        <TopicListItem
+        key={topic.id}
+        id={topic.id}
+        slug={topic.slug}
+        title={topic.title} 
         />
       ))}
     </div>
