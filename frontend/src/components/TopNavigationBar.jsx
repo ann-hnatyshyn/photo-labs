@@ -5,7 +5,7 @@ import FavBadge from './FavBadge';
 import FavIcon from './FavIcon';
 import TopicList from './TopicList';
 
-const TopNavigation = () => {
+const TopNavigation = ({topics}) => {
   return (
     <div className="top-nav-bar">
       <span className="top-nav-bar__logo">PhotoLabs</span>

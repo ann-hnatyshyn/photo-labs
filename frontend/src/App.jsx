@@ -7,8 +7,6 @@ import topics from 'mocks/topics';
 
 const App = () => {
 
-  const { topics, photos } = mockData;
-
   return (
   <div className="App">
     <HomeRoute topics={topics} photos={photos} />

@@ -4,7 +4,7 @@ import TopicListItem from "./TopicListItem";
 
 
 
-const TopicList = (topic) => {
+const TopicList = ({topics}) => {
   return (
     <div className="topic-list__item">
       {topics.map((topic) => (

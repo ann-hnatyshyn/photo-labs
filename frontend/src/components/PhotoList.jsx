@@ -4,7 +4,7 @@ import PhotoListItem from "./PhotoListItem";
 
 
 
-const PhotoList = () => {
+const PhotoList = ({photos}) => {
   return (
     <div className="photo-list">
       {photos.map((photo) => (
