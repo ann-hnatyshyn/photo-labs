@@ -28,6 +28,7 @@ const App = () => {
     setIsModalVisible(false);
   };
   
+
   return (
     <div className="App">
       <HomeRoute
@@ -42,7 +43,9 @@ const App = () => {
         onClose={handleCloseModal}
       />
     </div>
+    
   );
+
 };
 
 export default App;

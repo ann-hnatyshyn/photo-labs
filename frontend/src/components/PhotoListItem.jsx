@@ -18,6 +18,8 @@ const PhotoListItem = ({
     onPhotoClick(photo);
   };
 
+  console.log(photo, id, username, location);
+
   return (
     <div className='photo-list__item'>
       {/* Button to toggle favourite status */}

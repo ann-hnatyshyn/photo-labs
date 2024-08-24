@@ -1,10 +1,20 @@
-import React from "react";
-import "../styles/PhotoList.scss";
-import PhotoListItem from "./PhotoListItem";
+import React from 'react';
+import '../styles/PhotoList.scss';
+import PhotoListItem from './PhotoListItem';
 
-const PhotoList = ({ photos, id, location, imageSource, username, profile, favourites, toggleFavourite, onPhotoClick }) => {
+const PhotoList = ({
+  photos,
+  id,
+  location,
+  imageSource,
+  username,
+  profile,
+  favourites,
+  toggleFavourite,
+  onPhotoClick,
+}) => {
   return (
-    <div className="photo-list">
+    <div className='photo-list'>
       {photos.map((photo) => (
         <PhotoListItem
           key={photo.id}
@@ -18,7 +28,6 @@ const PhotoList = ({ photos, id, location, imageSource, username, profile, favou
           toggleFavourite={toggleFavourite}
           onPhotoClick={onPhotoClick}
         />
-        
       ))}
     </div>
   );
