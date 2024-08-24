@@ -35,7 +35,7 @@ const App = () => {
         photos={photos}
         favourites={favourites}
         toggleFavourite={toggleFavourite}
-        onPhotoClick={handlePhotoClick} // Pass the handler down
+        onPhotoClick={handlePhotoClick}
       />
       <PhotoDetailsModal 
         isVisible={isModalVisible}
