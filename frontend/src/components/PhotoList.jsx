@@ -7,6 +7,7 @@ const PhotoList = ({
   photos,
   favourites,
   toggleFavourite,
+  onPhotoClick
 }) => {
   return (
     <div className='photo-list'>
@@ -21,6 +22,7 @@ const PhotoList = ({
           profile={photo.user.profile}
           favourites={favourites}
           toggleFavourite={toggleFavourite}
+          onClick={onPhotoClick}
         />
       ))}
     </div>

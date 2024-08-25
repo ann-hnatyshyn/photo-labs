@@ -4,8 +4,10 @@ import HomeRoute from 'routes/HomeRoute';
 import photos from 'mocks/photos';
 import topics from 'mocks/topics';
 import PhotoDetailsModal from 'routes/PhotoDetailsModal';
+import PhotoList from 'components/PhotoList';
 
 const App = () => {
+
 
   const [favourites, setFavourites] = useState([]);
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -33,6 +35,7 @@ const App = () => {
 
   return (
     <div className="App">
+
       <HomeRoute
         topics={topics}
         photos={photos}
@@ -40,10 +43,16 @@ const App = () => {
         toggleFavourite={toggleFavourite}
         onClick={() => handlePhotoClick(photos)}
       />
+       <PhotoList
+        photos={photos}
+        onPhotoClick={handlePhotoClick}
+      />
       <PhotoDetailsModal 
         isVisible={isModalVisible}
         onClose={handleCloseModal}
-        selectedPhoto={selectedPhoto}
+        photos={selectedPhoto}
+        favourites={favourites}
+        toggleFavourite={toggleFavourite} 
       />
     </div>
     
