@@ -11,24 +11,25 @@ const PhotoListItem = ({
   profile,
   favourites,
   toggleFavourite,
-  onPhotoClick,
+  onClick
 }) => {
   // This function handles the click event on the photo image
   const handlePhotoClick = () => {
-    onPhotoClick(photo);
+    onClick(photo); //pass photo details to the parent component//
+    setIsModalVisible(true); //open the modal//
   };
 
   console.log(photo, id, username, location);
 
   return (
     <div className='photo-list__item'>
-      {/* Button to toggle favourite status */}
+      
       <PhotoFavButton onClick={() => toggleFavourite(photo)} />
 
       <img
         src={imageSource}
         alt={username}
-        onClick={handlePhotoClick}
+        onClick={() => handlePhotoClick(photo)}
         className='photo-list__image'
       />
       <div className='photo-list__user-details'>

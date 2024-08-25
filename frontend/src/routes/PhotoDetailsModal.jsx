@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import '../styles/PhotoDetailsModal.scss';
 import closeSymbol from '../assets/closeSymbol.svg';
 
-const PhotoDetailsModal = ({ isVisible, onClose }) => {
+
+
+const PhotoDetailsModal = ({ isVisible, onClose, selectedPhoto }) => {
   if (!isVisible) return null;
 
   return (
@@ -15,3 +17,12 @@ const PhotoDetailsModal = ({ isVisible, onClose }) => {
 };
 
 export default PhotoDetailsModal;
+
+
+
+// photo-details-modal__photographer-details
+// photo-details-modal__header
+// photo-details-modal__photographer-location
+// photo-details-modal__photographer-profile
+// photo-details-modal__photographer-info
+

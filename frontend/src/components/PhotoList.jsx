@@ -2,16 +2,11 @@ import React from 'react';
 import '../styles/PhotoList.scss';
 import PhotoListItem from './PhotoListItem';
 
+
 const PhotoList = ({
   photos,
-  id,
-  location,
-  imageSource,
-  username,
-  profile,
   favourites,
   toggleFavourite,
-  onPhotoClick,
 }) => {
   return (
     <div className='photo-list'>
@@ -26,7 +21,6 @@ const PhotoList = ({
           profile={photo.user.profile}
           favourites={favourites}
           toggleFavourite={toggleFavourite}
-          onPhotoClick={onPhotoClick}
         />
       ))}
     </div>

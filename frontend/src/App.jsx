@@ -9,6 +9,7 @@ const App = () => {
 
   const [favourites, setFavourites] = useState([]);
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [selectedPhoto, setSelectedPhoto] = useState([null]);
 
   const toggleFavourite = (photo) => {
     setFavourites((prevFavourites) => {
@@ -20,14 +21,15 @@ const App = () => {
     });
   };
 
-  const handlePhotoClick = () => {
+  const handlePhotoClick = (photo) => {
     setIsModalVisible(true);
+    setSelectedPhoto(photo)
   };
 
   const handleCloseModal = () => {
     setIsModalVisible(false);
+    setSelectedPhoto(null)
   };
-  
 
   return (
     <div className="App">
@@ -36,11 +38,12 @@ const App = () => {
         photos={photos}
         favourites={favourites}
         toggleFavourite={toggleFavourite}
-        onPhotoClick={handlePhotoClick}
+        onClick={() => handlePhotoClick(photos)}
       />
       <PhotoDetailsModal 
         isVisible={isModalVisible}
         onClose={handleCloseModal}
+        selectedPhoto={selectedPhoto}
       />
     </div>
     
