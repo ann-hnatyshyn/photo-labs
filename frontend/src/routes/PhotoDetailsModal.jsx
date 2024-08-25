@@ -6,6 +6,8 @@ import PhotoList from 'components/PhotoList';
 const PhotoDetailsModal = ({ isVisible, onClose, photos, favorites, toggleFavorite }) => {
   if (!isVisible) return null;
 
+  const isFavorited = favorites.includes(photos.id);
+
   return (
     <div className='photo-details-modal'>
 
@@ -27,9 +29,11 @@ const PhotoDetailsModal = ({ isVisible, onClose, photos, favorites, toggleFavori
             {photos.location.city}, {photos.location.country}
           </div>
         </div>
+        
+        <button onClick={() => toggleFavorite(photos)}>
+          {isFavorited ? 'Unfavorite' : 'Favorite'}
+        </button>
 
-
-        <PhotoList photos={photos.similar_photos} />
       </div>
     </div>
   );

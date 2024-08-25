@@ -1,29 +1,21 @@
 import React from 'react';
 import '../styles/PhotoListItem.scss';
-import PhotoFavButton from './PhotoFavButton';
-import photos from 'mocks/photos';
 
 const PhotoListItem = ({
   photo,
   onClick,
-  id,
   location,
   imageSource,
   username,
   profile,
-
 }) => {
 
   return (
     
-    <div className='photo-list__item' onClick={()=> 
-    { console.log('Photo clicked', photo); 
-    onClick(photo);}}>
-
+    <div className='photo-list__item' onClick={()=> onClick(photo)}>
       <img
         src={imageSource}
         alt={username}
-        onClick={handlePhotoClick}
         className='photo-list__image'
       />
       <div className='photo-list__user-details'>

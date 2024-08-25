@@ -3,7 +3,7 @@ import FavIcon from './FavIcon';
 import '../styles/PhotoFavButton.scss';
 
 
-function PhotoFavButton(favourites, toggleFavourite) {
+function PhotoFavButton(favorites, toggleFavorite) {
   const [isLiked, setIsLiked] = useState(false);
 
   const handleClick = () => {

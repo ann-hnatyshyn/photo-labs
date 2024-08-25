@@ -4,21 +4,19 @@ import HomeRoute from 'routes/HomeRoute';
 import photos from 'mocks/photos';
 import topics from 'mocks/topics';
 import PhotoDetailsModal from 'routes/PhotoDetailsModal';
-import PhotoList from 'components/PhotoList';
 
 const App = () => {
 
-
-  const [favourites, setFavourites] = useState([]);
+  const [favorites, setFavorites] = useState([]);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [selectedPhoto, setSelectedPhoto] = useState([null]);
 
-  const toggleFavourite = (photo) => {
-    setFavourites((prevFavourites) => {
-      if (prevFavourites.some(fav => fav.id === photo.id)) {
-        return prevFavourites.filter(fav => fav.id !== photo.id);
+  const toggleFavorite = (photo) => {
+    setFavorites((prevFavorites) => {
+      if (prevFavorites.some(fav => fav.id === photo.id)) {
+        return prevFavorites.filter(fav => fav.id !== photo.id);
       } else {
-        return [...prevFavourites, photo];
+        return [...prevFavorites, photo];
       }
     });
   };
@@ -39,20 +37,16 @@ const App = () => {
       <HomeRoute
         topics={topics}
         photos={photos}
-        favourites={favourites}
-        toggleFavourite={toggleFavourite}
-        onClick={() => handlePhotoClick(photos)}
-      />
-       <PhotoList
-        photos={photos}
-        onPhotoClick={handlePhotoClick}
+        favorites={favorites}
+        toggleFavorite={toggleFavorite}
+        handlePhotoClick={handlePhotoClick}
       />
       <PhotoDetailsModal 
         isVisible={isModalVisible}
         onClose={handleCloseModal}
         photos={selectedPhoto}
-        favourites={favourites}
-        toggleFavourite={toggleFavourite} 
+        favorites={favorites}
+        toggleFavorite={toggleFavorite} 
       />
     </div>
     
@@ -61,3 +55,6 @@ const App = () => {
 };
 
 export default App;
+
+
+
