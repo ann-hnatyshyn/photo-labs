@@ -1,9 +1,10 @@
 import React from 'react';
 import '../styles/TopNavigationBar.scss'
-import FavBadge from './FavBadge';
 import TopicList from './TopicList';
+import FavIcon from './FavIcon';
+import FavBadge from './FavBadge';
 
-const TopNavigation = ({topics, favorites, toggleFavorite}) => {
+const TopNavigation = ({topics, favorites}) => {
 
   return (
     <div className="top-nav-bar">
@@ -11,10 +12,9 @@ const TopNavigation = ({topics, favorites, toggleFavorite}) => {
       <div className="top-nav-bar__topic-list">
       <TopicList topics={topics}/>
       </div>
-      <div className="fav-badge">
-      <FavBadge isFavPhotoExist={favorites.length > 0}/>
+      <FavIcon/>
+      {favorites.length > 0 && <FavBadge count={favorites.length} />}  
       </div>
-    </div>
   )
 }
 

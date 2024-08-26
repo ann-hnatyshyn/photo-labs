@@ -21,3 +21,5 @@ const HomeRoute = ({ topics, photos, favorites, toggleFavorite, handlePhotoClick
 };
 
 export default HomeRoute;
+
+

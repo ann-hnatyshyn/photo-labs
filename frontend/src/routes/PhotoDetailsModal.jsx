@@ -1,39 +1,58 @@
 import React, { useState } from 'react';
 import '../styles/PhotoDetailsModal.scss';
 import closeSymbol from '../assets/closeSymbol.svg';
-import PhotoList from 'components/PhotoList';
+import PhotoFavButton from 'components/PhotoFavButton';
 
-const PhotoDetailsModal = ({ isVisible, onClose, photos, favorites, toggleFavorite }) => {
-  if (!isVisible) return null;
+const PhotoDetailsModal = ({
+  isVisible,
+  onClose,
+  photo,
+  similarPhotos,
+  favorites,
+  toggleFavorite,
+}) => {
+  if (!isVisible || !photo) {
+    return null;
+  }
 
-  const isFavorited = favorites.includes(photos.id);
+  const isFavorited = favorites.includes(photo.id);
 
   return (
     <div className='photo-details-modal'>
-
-      <button className='photo-details-modal__close-button' onClick={onClose}>
+      <div className='photo-details-modal__close-button' onClick={onClose}>
         <img src={closeSymbol} alt='close symbol' />
-      </button>
-      <img
-        className='photo-details-modal__image'
-        src={photos.urls.full}
-      />
-      <div className='photo-details-modal__photographer-details'>
-        <img
-          className='photo-details-modal__photographer-profile'
-          src={photos.user.profile}
+      </div>
+
+      <div className='fav-button-container'>
+        <PhotoFavButton
+          isLiked={isFavorited}
+          onClick={() => toggleFavorite(photo)}
         />
-        <div className='photo-details-modal__photographer-info'>
-          {photos.user.name}
-          <div className='photo-details-modal__photographer-location'>
-            {photos.location.city}, {photos.location.country}
+      </div>
+
+      <div className='photo-details-modal__images'>
+        <img
+          className='photo-details-modal__image'
+          src={photo.urls.full}
+          alt={photo.description}
+        />
+      </div>
+
+      <div className='photo-details-modal__top-bar'>
+        <div className='photo-details-modal__photographer-details'>
+          <div className='photo-details-modal__header'>
+            <img
+              className='photo-details-modal__photographer-profile'
+              src={photo.user.profile}
+            />
+          </div>
+          <div className='photo-details-modal__photographer-info'>
+            {photo.user.name}
+            <div className='photo-details-modal__photographer-location'>
+              {photo.location.city}, {photo.location.country}
+            </div>
           </div>
         </div>
-        
-        <button onClick={() => toggleFavorite(photos)}>
-          {isFavorited ? 'Unfavorite' : 'Favorite'}
-        </button>
-
       </div>
     </div>
   );

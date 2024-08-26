@@ -4,32 +4,16 @@ import HomeRoute from 'routes/HomeRoute';
 import photos from 'mocks/photos';
 import topics from 'mocks/topics';
 import PhotoDetailsModal from 'routes/PhotoDetailsModal';
+import useApplicationData from 'hooks/useApplicationData';
 
 const App = () => {
 
-  const [favorites, setFavorites] = useState([]);
-  const [isModalVisible, setIsModalVisible] = useState(false);
-  const [selectedPhoto, setSelectedPhoto] = useState([null]);
-
-  const toggleFavorite = (photo) => {
-    setFavorites((prevFavorites) => {
-      if (prevFavorites.some(fav => fav.id === photo.id)) {
-        return prevFavorites.filter(fav => fav.id !== photo.id);
-      } else {
-        return [...prevFavorites, photo];
-      }
-    });
-  };
-
-  const handlePhotoClick = (photo) => {
-    setIsModalVisible(true);
-    setSelectedPhoto(photo)
-  };
-
-  const handleCloseModal = () => {
-    setIsModalVisible(false);
-    setSelectedPhoto(null)
-  };
+  const {
+    state,
+    updateToFavPhotoIds,
+    setPhotoSelected,
+    onClosePhotoDetailsModal,
+  } = useApplicationData();
 
   return (
     <div className="App">
@@ -44,7 +28,7 @@ const App = () => {
       <PhotoDetailsModal 
         isVisible={isModalVisible}
         onClose={handleCloseModal}
-        photos={selectedPhoto}
+        photo={selectedPhoto}
         favorites={favorites}
         toggleFavorite={toggleFavorite} 
       />

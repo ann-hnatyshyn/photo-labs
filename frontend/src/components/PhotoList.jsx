@@ -19,7 +19,7 @@ const PhotoList = ({
           photo={photo}
           toggleFavorite={toggleFavorite}
           onClick={onClick}
-          isFavorited={favorites.some(fav => fav.id === photo.id)} 
+          isFavorited={favorites.includes(photo.id)} 
           location={photo.location}
           imageSource={photo.urls.regular}
           username={photo.user.username}
@@ -29,7 +29,5 @@ const PhotoList = ({
     </div>
   );
 };
-
-console.log('onClick:', onClick); 
 
 export default PhotoList;
