@@ -19,18 +19,21 @@ const App = () => {
     <div className="App">
 
       <HomeRoute
+        state={state}
         topics={topics}
         photos={photos}
-        favorites={favorites}
-        toggleFavorite={toggleFavorite}
+        updateToFavPhotoIds={ updateToFavPhotoIds}
         handlePhotoClick={handlePhotoClick}
+        setPhotoSelected={setPhotoSelected}
+        onClosePhotoDetailsModal={onClosePhotoDetailsModal}
       />
-      <PhotoDetailsModal 
-        isVisible={isModalVisible}
-        onClose={handleCloseModal}
-        photo={selectedPhoto}
-        favorites={favorites}
-        toggleFavorite={toggleFavorite} 
+      <PhotoDetailsModal
+        topics={topics}
+        photos={photos}
+        state={state}
+        updateToFavPhotoIds={updateToFavPhotoIds}
+        setPhotoSelected={setPhotoSelected}
+        onClosePhotoDetailsModal={onClosePhotoDetailsModal}
       />
     </div>
     
