@@ -3,29 +3,38 @@ import React, { useState } from 'react';
 
 const useApplicationData = () => {
 
-const [favorites, setFavorites] = useState([]);
-const [isModalVisible, setIsModalVisible] = useState(false);
-const [selectedPhoto, setSelectedPhoto] = useState([null]);
-
-const toggleFavorite = (photo) => {
-  setFavorites((prevFavorites) => {
-    const photoId = photo.id;
-    if (prevFavorites.includes(photoId)){
-      return prevFavorites.filter(id => id !== photoId);
-    } else {
-      return [...prevFavorites, photoId];
-    }
+  const [state, setState] = useState({
+    favorites: [],
+    isModalVisible: false,
+    selectedPhoto: null
   });
-};
 
-const handlePhotoClick = (photo) => {
-  setIsModalVisible(true);
-  setSelectedPhoto(photo)
-};
+  const updateToFavPhotoIds = (photo) => {
+    setFavorites((prevFavorites) => {
+      const photoId = photo.id;
+      if (prevFavorites.includes(photoId)){
+        return prevFavorites.filter(id => id !== photoId);
+      } else {
+        return [...prevFavorites, photoId];
+      }
+    });
+  };
 
-const handleCloseModal = () => {
-  setIsModalVisible(false);
-  setSelectedPhoto(null)
+  const setPhotoSelected = (photo) => {
+    setIsModalVisible(true);
+    setSelectedPhoto(photo)
+  };
+
+  const onClosePhotoDetailsModal = () => {
+    setIsModalVisible(false);
+    setSelectedPhoto(null)
+  };
+
+return {
+  state,
+  updateToFavPhotoIds,
+  setPhotoSelected,
+  onClosePhotoDetailsModal
 };
 
 };
