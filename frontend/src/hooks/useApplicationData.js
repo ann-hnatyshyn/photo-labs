@@ -62,46 +62,41 @@ function reducer(state, action) {
 }
 
 const useApplicationData = () => {
-  const [state, dispatch] = useReducer(reducer, {
+  const initialState = {
     favorites: [],
     photos: [],
     topics: [],
     selectedPhoto: null,
     isModalVisible: false,
-  });
+  };
+
+  const [state, dispatch] = useReducer(reducer, initialState);
 
 
   const updateToFavPhotoIds = (photo) => {
     const photoId = photo.id;
     if (state.favorites.includes(photoId)) {
-      setState((prevState) => ({
-        ...prevState,
-        favorites: prevState.favorites.filter((id) => id !== photoId),
-      }));
+      dispatch({ type: ACTIONS.FAV_PHOTO_REMOVED, payload: { id: photoId } });
     } else {
-      setState((prevState) => ({
-        ...prevState,
-        favorites: [...prevState.favorites, photoId],
-      }));
+      dispatch({ type: ACTIONS.FAV_PHOTO_ADDED, payload: { id: photoId } });
     }
   };
 
+
   const setPhotoSelected = (photo) => {
-    setState((prevState) => ({
-      ...prevState,
-    setIsModalVisible,
-    setSelectedPhoto
-  }));
+    dispatch({ type: ACTIONS.SELECT_PHOTO, payload: { photo } });
   };
 
   const onClosePhotoDetailsModal = () => {
-    setState((prevState) => ({
-      ...prevState,
-      isModalVisible: false,
-      selectedPhoto: null,
-    }));
+    dispatch({ type: ACTIONS.DISPLAY_PHOTO_DETAILS, payload: { isVisible: false, photo: null } });
   };
 
-
+  return {
+    state,
+    updateToFavPhotoIds,
+    setPhotoSelected,
+    onClosePhotoDetailsModal,
+  };
+};
 
 export default useApplicationData;
