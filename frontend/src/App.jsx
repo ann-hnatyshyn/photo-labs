@@ -23,7 +23,6 @@ const App = () => {
         topics={topics}
         photos={photos}
         updateToFavPhotoIds={ updateToFavPhotoIds}
-        handlePhotoClick={handlePhotoClick}
         setPhotoSelected={setPhotoSelected}
         onClosePhotoDetailsModal={onClosePhotoDetailsModal}
       />

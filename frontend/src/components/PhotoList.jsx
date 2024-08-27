@@ -4,10 +4,11 @@ import PhotoListItem from './PhotoListItem';
 
 
 const PhotoList = ({
+  state,
   photos,
   favorites,
-  toggleFavorite,
-  onClick
+  updateToFavPhotoIds,
+  setPhotoSelected
 }) => {
   return (
     <div className='photo-list'>
@@ -17,8 +18,8 @@ const PhotoList = ({
           key={photo.id}
           id={photo.id}
           photo={photo}
-          toggleFavorite={toggleFavorite}
-          onClick={onClick}
+          handlePhotoClick={setPhotoSelected}
+          updateToFavPhotoIds={updateToFavPhotoIds}
           isFavorited={favorites.includes(photo.id)} 
           location={photo.location}
           imageSource={photo.urls.regular}

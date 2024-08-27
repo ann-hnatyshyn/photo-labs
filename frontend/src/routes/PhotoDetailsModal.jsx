@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useReducer } from 'react';
 import '../styles/PhotoDetailsModal.scss';
 import closeSymbol from '../assets/closeSymbol.svg';
 import PhotoFavButton from 'components/PhotoFavButton';
@@ -7,9 +7,7 @@ const PhotoDetailsModal = ({
   isVisible,
   onClose,
   photo,
-  similarPhotos,
   favorites,
-  toggleFavorite,
 }) => {
   if (!isVisible || !photo) {
     return null;
