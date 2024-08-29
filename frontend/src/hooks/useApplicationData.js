@@ -69,9 +69,8 @@ const useApplicationData = () => {
     selectedPhoto: null,
     isModalVisible: false,
   };
-
+  
   const [state, dispatch] = useReducer(reducer, initialState);
-
 
   const updateToFavPhotoIds = (photo) => {
     const photoId = photo.id;
@@ -82,20 +81,29 @@ const useApplicationData = () => {
     }
   };
 
-
   const setPhotoSelected = (photo) => {
     dispatch({ type: ACTIONS.SELECT_PHOTO, payload: { photo } });
   };
 
-  const onClosePhotoDetailsModal = () => {
-    dispatch({ type: ACTIONS.DISPLAY_PHOTO_DETAILS, payload: { isVisible: false, photo: null } });
+  const setPhotos = (photos) => {
+    dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: { photos } });
+  };
+
+  const setTopics = (topics) => {
+    dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: { topics } });
+  };
+
+  const displayPhotoDetails = (isVisible, photo) => {
+    dispatch({ type: ACTIONS.DISPLAY_PHOTO_DETAILS, payload: { isVisible, photo } });
   };
 
   return {
     state,
     updateToFavPhotoIds,
     setPhotoSelected,
-    onClosePhotoDetailsModal,
+    setPhotos,
+    setTopics,
+    displayPhotoDetails,
   };
 };
 

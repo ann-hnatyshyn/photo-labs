@@ -1,13 +1,14 @@
-import React, { useReducer } from 'react';
+import React from 'react';
 import '../styles/PhotoDetailsModal.scss';
 import closeSymbol from '../assets/closeSymbol.svg';
 import PhotoFavButton from 'components/PhotoFavButton';
 
 const PhotoDetailsModal = ({
   isVisible,
-  onClose,
+  onClosePhotoDetailsModal,
   photo,
   favorites,
+  updateToFavPhotoIds,
 }) => {
   if (!isVisible || !photo) {
     return null;
@@ -17,14 +18,14 @@ const PhotoDetailsModal = ({
 
   return (
     <div className='photo-details-modal'>
-      <div className='photo-details-modal__close-button' onClick={onClose}>
+      <div className='photo-details-modal__close-button' onClick={onClosePhotoDetailsModal}>
         <img src={closeSymbol} alt='close symbol' />
       </div>
 
       <div className='fav-button-container'>
         <PhotoFavButton
           isLiked={isFavorited}
-          onClick={() => toggleFavorite(photo)}
+          onClick={() => updateToFavPhotoIds(photo)}
         />
       </div>
 
@@ -32,7 +33,7 @@ const PhotoDetailsModal = ({
         <img
           className='photo-details-modal__image'
           src={photo.urls.full}
-          alt={photo.description}
+          alt={photo?.description || 'Photo'}
         />
       </div>
 
@@ -42,6 +43,7 @@ const PhotoDetailsModal = ({
             <img
               className='photo-details-modal__photographer-profile'
               src={photo.user.profile}
+              alt={`${photo?.user?.name}'s profile`} 
             />
           </div>
           <div className='photo-details-modal__photographer-info'>

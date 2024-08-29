@@ -1,28 +1,37 @@
 import React from 'react';
+import '../styles/HomeRoute.scss';
 import TopNavigation from 'components/TopNavigationBar';
 import PhotoList from 'components/PhotoList';
-import '../styles/HomeRoute.scss';
 
-const HomeRoute = ({ topics, photos, state, updateToFavPhotoIds, setPhotoSelected }) => {
-
-  const favorites = state?.favorites || []; 
+const HomeRoute = ({
+  topics,
+  photos,
+  state,
+  updateToFavPhotoIds,
+  setPhotoSelected,
+}) => {
+  const favorites = state?.favorites || [];
 
   return (
-    <div className="home-route">
+    <div className='home-route'>
       <TopNavigation
-      topics={topics} 
-      favorites={favorites.length > 0}
+        topics={topics}
+        state={state}
+        // updateToFavPhotoIds={updateToFavPhotoIds}
+        // setPhotoSelected={setPhotoSelected}
+        // favorites={favorites.length > 0}
       />
-      <PhotoList 
-        photos={photos} 
-        favorites={favorites}
+
+      <PhotoList
+        state={state}
+        photos={photos}
+        // favorites={favorites}
+        favorites={favorites.length > 0}
         updateToFavPhotoIds={updateToFavPhotoIds}
-        handlePhotoClick={setPhotoSelected}
+        setPhotoSelected={setPhotoSelected}
       />
     </div>
   );
 };
 
 export default HomeRoute;
-
-
