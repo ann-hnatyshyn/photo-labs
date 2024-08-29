@@ -1,9 +1,14 @@
 import React from 'react';
 import '../styles/TopNavigationBar.scss'
 import TopicList from './TopicList';
-import PhotoFavButton from './PhotoFavButton';
+import FavIcon from './FavIcon';
+
 
 const TopNavigation = ({topics, favorites, updateToFavPhotoIds, setPhotoSelected}) => {
+
+  console.log(favorites, "favorites");
+  console.log(updateToFavPhotoIds, "updateToFavPhotoIds");
+  console.log(setPhotoSelected, "setPhotoSelected")
 
   return (
     <div className="top-nav-bar">
@@ -11,7 +16,7 @@ const TopNavigation = ({topics, favorites, updateToFavPhotoIds, setPhotoSelected
       <TopicList 
         topics={topics}
       />
-      <PhotoFavButton favorites={favorites} />
+      <FavIcon />
     </div>
   )
 }

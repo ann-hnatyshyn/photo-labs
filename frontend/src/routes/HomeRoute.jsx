@@ -25,7 +25,6 @@ const HomeRoute = ({
       <PhotoList
         state={state}
         photos={photos}
-        // favorites={favorites}
         favorites={favorites.length > 0}
         updateToFavPhotoIds={updateToFavPhotoIds}
         setPhotoSelected={setPhotoSelected}

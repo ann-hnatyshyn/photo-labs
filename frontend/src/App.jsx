@@ -20,15 +20,15 @@ const App = () => {
 
       <HomeRoute
         state={state}
-        topics={topics}
-        photos={photos}
+        topics={state.topics}
+        photos={state.photos}
         updateToFavPhotoIds={ updateToFavPhotoIds}
         setPhotoSelected={setPhotoSelected}
       />
       <PhotoDetailsModal
         state={state}
-        topics={topics}
-        photos={photos}
+        topics={state.topics}
+        photos={state.photos}
         isVisible={state.isModalVisible}
         onClosePhotoDetailsModal={onClosePhotoDetailsModal}
         favorites={state.favorites} 

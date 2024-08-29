@@ -1,4 +1,5 @@
 import { useReducer } from 'react';
+import { useEffect } from 'react';
 
 export const ACTIONS = {
   FAV_PHOTO_ADDED: 'FAV_PHOTO_ADDED',
@@ -96,6 +97,14 @@ const useApplicationData = () => {
   const displayPhotoDetails = (isVisible, photo) => {
     dispatch({ type: ACTIONS.DISPLAY_PHOTO_DETAILS, payload: { isVisible, photo } });
   };
+
+  useEffect(() => {
+    fetch("/api/photos")
+      .then((response) => response.json())
+      .then((data) => dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: data }))
+      .then((data) => dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: data }))
+  }, []);
+
 
   return {
     state,
