@@ -7,11 +7,10 @@ export const ACTIONS = {
   SET_PHOTO_DATA: 'SET_PHOTO_DATA',
   SET_TOPIC_DATA: 'SET_TOPIC_DATA',
   SELECT_PHOTO: 'SELECT_PHOTO',
-  DISPLAY_PHOTO_DETAILS: 'DISPLAY_PHOTO_DETAILS'
-}
+  DISPLAY_PHOTO_DETAILS: 'DISPLAY_PHOTO_DETAILS',
+};
 
 function reducer(state, action) {
-
   switch (action.type) {
     case ACTIONS.FAV_PHOTO_ADDED: {
       const photoId = action.payload.id;
@@ -20,7 +19,7 @@ function reducer(state, action) {
         favorites: [...state.favorites, photoId],
       };
     }
-      
+
     case ACTIONS.FAV_PHOTO_REMOVED: {
       const photoId = action.payload.id;
       return {
@@ -56,9 +55,8 @@ function reducer(state, action) {
     }
     default:
       throw new Error(
-      `Tried to reduce with unsupported action type: ${action.type}`
+        `Tried to reduce with unsupported action type: ${action.type}`
       );
-
   }
 }
 
@@ -70,7 +68,7 @@ const useApplicationData = () => {
     selectedPhoto: null,
     isModalVisible: false,
   };
-  
+
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const updateToFavPhotoIds = (photo) => {
@@ -95,16 +93,27 @@ const useApplicationData = () => {
   };
 
   const displayPhotoDetails = (isVisible, photo) => {
-    dispatch({ type: ACTIONS.DISPLAY_PHOTO_DETAILS, payload: { isVisible, photo } });
+    dispatch({
+      type: ACTIONS.DISPLAY_PHOTO_DETAILS,
+      payload: { isVisible, photo },
+    });
   };
 
   useEffect(() => {
-    fetch("/api/photos")
+    fetch('/api/photos')
       .then((response) => response.json())
-      .then((data) => dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: data }))
-      .then((data) => dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: data }))
+      .then((data) =>
+        dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: photos })
+      );
   }, []);
 
+  useEffect(() => {
+    fetch('/api/topics')
+      .then((response) => response.json())
+      .then((data) =>
+        dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: topics })
+      );
+  }, []);
 
   return {
     state,
