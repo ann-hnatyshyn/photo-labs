@@ -3,8 +3,8 @@ import '../styles/PhotoList.scss';
 import PhotoListItem from './PhotoListItem';
 
 const PhotoList = ({
-  // isLiked,
-  // toggleLike,
+  isLiked,
+  toggleLike,
   photos,
   favorites,
   updateToFavPhotoIds,

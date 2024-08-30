@@ -14,10 +14,3 @@ function PhotoFavButton({ isLiked, photoId, toggleLike}) {
 }
 
 export default PhotoFavButton;
-
-
-
-
-// const handleClick = () => {
-//   onClick();
-// };
