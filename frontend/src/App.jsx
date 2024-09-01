@@ -7,6 +7,7 @@ import useApplicationData from 'hooks/useApplicationData';
 const App = () => {
 
   const {
+    isLiked,
     photos,
     topics,
     state,
@@ -21,8 +22,9 @@ const App = () => {
     <div className="App">
 
       <HomeRoute
-        topics={topics}
-        photos={photos}
+        isLiked={isLiked}
+        topics={state.topics}
+        photos={state.photos}
         updateToFavPhotoIds={ updateToFavPhotoIds}
         setPhotoSelected={setPhotoSelected}
       />
