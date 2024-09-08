@@ -4,32 +4,32 @@ import TopNavigation from 'components/TopNavigationBar';
 import PhotoList from 'components/PhotoList';
 
 const HomeRoute = ({
-  isLiked,
-  state,
   toggleLike,
-  topics,
-  photos,
+  isLiked,
+  setTopics,
+  setPhotos,
   updateToFavPhotoIds,
   setPhotoSelected,
+  addToFavorites,
+
 }) => {
 
-  const favorites = state?.favorites || [];
+  const favorites = photo => isLiked(photo.id);
 
   return (
     <div className='home-route'>
       <TopNavigation
-        topics={topics}
-        favorites={favorites.length > 0}
-        updateToFavPhotoIds={updateToFavPhotoIds}
-        setPhotoSelected={setPhotoSelected}
+        setTopics={setTopics}
+        favorites={favorites}
       />
 
       <PhotoList
-        isLiked={isLiked}
-        photos={photos}
-        favorites={favorites}
+        setPhotos={setPhotos}
+        favorites={favorites} 
+        addToFavorites={addToFavorites}
         updateToFavPhotoIds={updateToFavPhotoIds}
-        toggleLike={setPhotoSelected}
+        toggleLike={toggleLike}
+        setPhotoSelected={setPhotoSelected}
       />
     </div>
   );

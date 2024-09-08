@@ -4,23 +4,31 @@ import PhotoFavButton from './PhotoFavButton';
 
 
 const PhotoListItem = ({
-  photo,
+  isLiked,
   isFavorited,
-  handlePhotoClick,
   updateToFavPhotoIds,
   location,
   imageSource,
   username,
   profile,
+  setPhotoSelected,
+
 }) => {
   return (
-    <div className='photo-list__item' onClick={() => handlePhotoClick(photo)}> 
+    <div className='photo-list__item' onClick={() => setPhotoSelected(photo)}> 
     
       <PhotoFavButton
-        isLiked={isFavorited}
-        onClick={() => updateToFavPhotoIds(photo)}
+        isLiked={isLiked}
+        isFavorited={isFavorited}
+        toggleLike={() => updateToFavPhotoIds(photo)}
       />
-      <img src={imageSource} alt={username} className='photo-list__image' />
+
+      <img 
+      src={imageSource} 
+      alt={username} 
+      className='photo-list__image' 
+      />
+
       <div className='photo-list__user-details'>
         <img
           src={profile}

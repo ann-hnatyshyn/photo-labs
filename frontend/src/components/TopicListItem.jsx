@@ -1,11 +1,11 @@
 import React from "react";
 import "../styles/TopicListItem.scss";
 
-const TopicListItem = ({ topics, title }) => {
+const TopicListItem = ({ setTopics, title }) => {
 
   return (
     <div className="topic-list__item">
-       <span>{topics}</span>
+       <span>{setTopics}</span>
        <span>{title}</span>
     </div>
   );

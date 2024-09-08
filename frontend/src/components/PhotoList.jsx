@@ -3,12 +3,11 @@ import '../styles/PhotoList.scss';
 import PhotoListItem from './PhotoListItem';
 
 const PhotoList = ({
-  isLiked,
   toggleLike,
-  photos,
+  setPhotos,
   favorites,
   updateToFavPhotoIds,
-  setPhotoSelected
+
 }) => {
 
   return (
@@ -16,14 +15,13 @@ const PhotoList = ({
       {photos.map((photo) => (
         <PhotoListItem
           key={photo.id}
-          isLiked={isLiked}
-          toggleLike={toggleLike}
           id={photo.id}
-          photo={photo}
-          title={photo.title}
+          setPhotos={setPhotos}
+          favorites={favorites}
+          toggleLike={toggleLike}
           setPhotoSelected={setPhotoSelected}
           updateToFavPhotoIds={updateToFavPhotoIds}
-          isFavorited={isLiked}
+          title={photo.title}
           location={photo.location}
           imageSource={photo.urls.regular}
           username={photo.user.username}

@@ -7,16 +7,18 @@ import useApplicationData from 'hooks/useApplicationData';
 const App = () => {
 
   const {
-    isLiked,
-    photos,
-    topics,
     state,
-    updateToFavPhotoIds,
-    setPhotoSelected,
-    onClosePhotoDetailsModal,
+    // isLiked,
+    // updateToFavPhotoIds,
+    // setPhotoSelected,
+    // closePhotoModal,
   } = useApplicationData();
 
+  console.log(state);
 
+  // const isLiked = photoId => likes.includes(photoId);
+
+  // const isFavorited = likes.length > 0;
 
   return (
     <div className="App">
@@ -25,14 +27,13 @@ const App = () => {
         isLiked={isLiked}
         topics={state.topics}
         photos={state.photos}
-        updateToFavPhotoIds={ updateToFavPhotoIds}
+        updateToFavPhotoIds={updateToFavPhotoIds}
         setPhotoSelected={setPhotoSelected}
       />
       <PhotoDetailsModal
-        topics={topics}
-        photos={photos}
+        photos={state.photos}
         isVisible={state.isModalVisible}
-        onClosePhotoDetailsModal={onClosePhotoDetailsModal}
+        closePhotoModal={closePhotoModal}
         favorites={state.favorites} 
         updateToFavPhotoIds={updateToFavPhotoIds}
         setPhotoSelected={setPhotoSelected}

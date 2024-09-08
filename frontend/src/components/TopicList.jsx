@@ -3,18 +3,18 @@ import "../styles/TopicList.scss";
 import TopicListItem from "./TopicListItem";
 
 
-const TopicList = ({topics}) => {
+const TopicList = ({setTopics}) => {
 
-  console.log(topics);
+  console.log(setTopics);
 
   return (
     <div className="top-nav-bar__topic-list">
-      {topics.map((topic) => (
+      {setTopics.map((setTopics) => (
         <TopicListItem
-        key={topic.id}
-        id={topic.id}
-        topic={topic}
-        title={topic.title}
+        setTopics={setTopics}
+        key={setTopics.id}
+        id={setTopics.id}
+        title={setTopics.title}
         />
       ))}
     </div>

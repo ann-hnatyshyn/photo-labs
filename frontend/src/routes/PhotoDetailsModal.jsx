@@ -2,12 +2,12 @@ import React from 'react';
 import '../styles/PhotoDetailsModal.scss';
 import closeSymbol from '../assets/closeSymbol.svg';
 import PhotoFavButton from 'components/PhotoFavButton';
+import PhotoList from 'components/PhotoList';
 
 const PhotoDetailsModal = ({
   isVisible,
   onClosePhotoDetailsModal,
   photo,
-  favorites,
   updateToFavPhotoIds,
 }) => {
   if (!isVisible || !photo) {
@@ -21,6 +21,12 @@ const PhotoDetailsModal = ({
       <div className='photo-details-modal__close-button' onClick={onClosePhotoDetailsModal}>
         <img src={closeSymbol} alt='close symbol' />
       </div>
+
+      <PhotoList 
+      photos={photo.similar_photos}
+      favorites={favorites} 
+      addToFavorites={addToFavorites} 
+      />
 
       <div className='fav-button-container'>
         <PhotoFavButton
