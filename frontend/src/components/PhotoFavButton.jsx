@@ -3,11 +3,12 @@ import FavIcon from './FavIcon';
 import '../styles/PhotoFavButton.scss';
 
 
-function PhotoFavButton({ isLiked, photoId, toggleLike}) {
+function PhotoFavButton({favorites, photoId, updateToFavPhotoIds}) {
+  const isLiked = favorites.includes(photoId);
   return (
-  <div className="photo-list__fav-icon" onClick={() => toggleLike(photoId)}>
+  <div className="photo-list__fav-icon" onClick={() => updateToFavPhotoIds(photoId)}>
     <div className="photo-list__fav-icon-svg">
-        <FavIcon selected={isLiked(photoId)} />
+        <FavIcon selected={isLiked}/>
     </div>
   </div>
   );

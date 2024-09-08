@@ -3,10 +3,10 @@ import '../styles/PhotoList.scss';
 import PhotoListItem from './PhotoListItem';
 
 const PhotoList = ({
-  toggleLike,
-  setPhotos,
+  photos,
   favorites,
   updateToFavPhotoIds,
+  setPhotoSelected
 
 }) => {
 
@@ -16,9 +16,7 @@ const PhotoList = ({
         <PhotoListItem
           key={photo.id}
           id={photo.id}
-          setPhotos={setPhotos}
           favorites={favorites}
-          toggleLike={toggleLike}
           setPhotoSelected={setPhotoSelected}
           updateToFavPhotoIds={updateToFavPhotoIds}
           title={photo.title}

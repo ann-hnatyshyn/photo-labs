@@ -45,12 +45,7 @@ function reducer(state, action) {
       return { ...state, photos: action.payload };
     }
 
-    case ACTIONS.TOGGLE_LIKE: {
-      return { ...state, photo: action.payload };
-    }
-
     case ACTIONS.SET_TOPIC_DATA: {
-      console.log(action.payload);
       return { ...state, topics: action.payload };
     }
 
@@ -83,45 +78,28 @@ function reducer(state, action) {
 const useApplicationData = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  // const isLiked = (photoId) => {
-  //   dispatch (state.likedPhotos((likedPhoto) => likedPhoto.id === photoId));
-  // };
+  const updateToFavPhotoIds = (photo) => {
+    const photoId = photo.id;
+    if (state.favorites.includes(photoId)) {
+      dispatch({ type: ACTIONS.FAV_PHOTO_REMOVED, payload: { photoId } });
+    } else {
+      dispatch({ type: ACTIONS.FAV_PHOTO_ADDED, payload: { photoId } });
+    }
+  };
 
-  // const updateToFavPhotoIds = (photo) => {
-  //   const photoId = photo.id;
-  //   if (state.favorites.includes(photoId)) {
-  //     dispatch({ type: ACTIONS.FAV_PHOTO_REMOVED, payload: { photoId } });
-  //   } else {
-  //     dispatch({ type: ACTIONS.FAV_PHOTO_ADDED, payload: { photoId } });
-  //   }
-  // };
+  const setPhotoSelected = (photo) => {
+    dispatch({ type: ACTIONS.SELECT_PHOTO, payload: { photo } });
+  };
 
-  // const setPhotoSelected = (photo) => {
-  //   dispatch({ type: ACTIONS.SELECT_PHOTO, payload: { photo } });
-  // };
+  const displayPhotoDetails = (isVisible) => {
+    dispatch({type: ACTIONS.DISPLAY_PHOTO_DETAILS, payload: { isVisible },});
+  };
 
-  // const toggleLike = (photo) => {
-  //   dispatch({type: ACTIONS.TOGGLE_LIKE, payload: { photo }});
-  // };
-
-  // const setPhotos = (photo) => {
-  //   dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: { photo } });
-  // };
-
-  // const setTopics = (topic) => {
-  //   dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: { topic } });
-  // };
-
-  // const displayPhotoDetails = (isVisible) => {
-  //   dispatch({type: ACTIONS.DISPLAY_PHOTO_DETAILS, payload: { isVisible },});
-  // };
-
-  // const closePhotoModal = () => {
-  //   dispatch({ type: ACTIONS.CLOSE_PHOTO_MODAL });
-  // };
+  const closePhotoModal = () => {
+    dispatch({ type: ACTIONS.CLOSE_PHOTO_MODAL });
+  };
 
   useEffect(() => {
-    console.log('effectphotos');
     fetch('/api/photos')
       .then((response) => response.json())
       .then((photos) => {
@@ -131,24 +109,21 @@ const useApplicationData = () => {
   } );
 
   useEffect(() => {
-    console.log('goodbye');
     fetch('/api/topics')
       .then((response) => response.json())
       .then((topics) => {
         dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: topics });
-        console.log(topics);
       })
       .catch((error) => console.error('Error fetching topics:', error));
   }, []);
 
   return {
     state,
-    // isLiked,
-    // setPhotoSelected,
-    // displayPhotoDetails,
-    // closePhotoModal,
-    // updateToFavPhotoIds,
-    // toggleLike
+    setPhotoSelected,
+    displayPhotoDetails,
+    closePhotoModal,
+    updateToFavPhotoIds,
+
   };
 };
 

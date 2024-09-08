@@ -8,10 +8,10 @@ const App = () => {
 
   const {
     state,
-    // isLiked,
-    // updateToFavPhotoIds,
-    // setPhotoSelected,
-    // closePhotoModal,
+    setPhotoSelected,
+    updateToFavPhotoIds,
+    closePhotoModal,
+    toggleLike,
   } = useApplicationData();
 
   console.log(state);
@@ -24,20 +24,20 @@ const App = () => {
     <div className="App">
 
       <HomeRoute
-        isLiked={isLiked}
+        favorites={state.favorites}
         topics={state.topics}
         photos={state.photos}
         updateToFavPhotoIds={updateToFavPhotoIds}
         setPhotoSelected={setPhotoSelected}
       />
-      <PhotoDetailsModal
+      {/* <PhotoDetailsModal
         photos={state.photos}
         isVisible={state.isModalVisible}
         closePhotoModal={closePhotoModal}
         favorites={state.favorites} 
         updateToFavPhotoIds={updateToFavPhotoIds}
         setPhotoSelected={setPhotoSelected}
-      />
+      /> */}
     </div>
     
   );

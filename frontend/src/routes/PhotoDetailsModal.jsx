@@ -6,9 +6,10 @@ import PhotoList from 'components/PhotoList';
 
 const PhotoDetailsModal = ({
   isVisible,
-  onClosePhotoDetailsModal,
+  closePhotoModal,
   photo,
   updateToFavPhotoIds,
+
 }) => {
   if (!isVisible || !photo) {
     return null;
@@ -18,7 +19,7 @@ const PhotoDetailsModal = ({
 
   return (
     <div className='photo-details-modal'>
-      <div className='photo-details-modal__close-button' onClick={onClosePhotoDetailsModal}>
+      <div className='photo-details-modal__close-button' onClick={closePhotoModal}>
         <img src={closeSymbol} alt='close symbol' />
       </div>
 
