@@ -6,20 +6,21 @@ const PhotoList = ({
   photos,
   favorites,
   updateToFavPhotoIds,
-  setPhotoSelected
-
+  setPhotoSelected,
+  displayPhotoDetails
 }) => {
 
   return (
     <div className='photo-list'>
       {photos.map((photo) => (
         <PhotoListItem
+          photo={photo}
           key={photo.id}
           id={photo.id}
           favorites={favorites}
           setPhotoSelected={setPhotoSelected}
           updateToFavPhotoIds={updateToFavPhotoIds}
-          title={photo.title}
+          displayPhotoDetails={displayPhotoDetails}
           location={photo.location}
           imageSource={photo.urls.regular}
           username={photo.user.username}

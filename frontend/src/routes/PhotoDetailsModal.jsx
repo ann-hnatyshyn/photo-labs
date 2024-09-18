@@ -5,34 +5,36 @@ import PhotoFavButton from 'components/PhotoFavButton';
 import PhotoList from 'components/PhotoList';
 
 const PhotoDetailsModal = ({
-  isVisible,
-  closePhotoModal,
+  state,
   photo,
+  favorites,
+  setPhotoSelected,
   updateToFavPhotoIds,
-
+  displayPhotoDetails,
+  closePhotoModal,
 }) => {
-  if (!isVisible || !photo) {
+  if (!state.setPhotoSelected|| !photo) {
     return null;
   }
 
-  const isFavorited = favorites.includes(photo.id);
-
   return (
     <div className='photo-details-modal'>
-      <div className='photo-details-modal__close-button' onClick={closePhotoModal}>
+      <div className='photo-details-modal__close-button' onClick={closePhotoModal} >
         <img src={closeSymbol} alt='close symbol' />
       </div>
 
       <PhotoList 
       photos={photo.similar_photos}
       favorites={favorites} 
-      addToFavorites={addToFavorites} 
+      updateToFavPhotoIds={updateToFavPhotoIds} 
+      setPhotoSelected={setPhotoSelected}
       />
 
       <div className='fav-button-container'>
         <PhotoFavButton
-          isLiked={isFavorited}
-          onClick={() => updateToFavPhotoIds(photo)}
+          photoId={photo.Id}
+          favorites={favorites}
+          updateToFavPhotoIds={updateToFavPhotoIds}
         />
       </div>
 
@@ -54,7 +56,7 @@ const PhotoDetailsModal = ({
             />
           </div>
           <div className='photo-details-modal__photographer-info'>
-            {photo.user.name}
+            {photo.user.username}
             <div className='photo-details-modal__photographer-location'>
               {photo.location.city}, {photo.location.country}
             </div>

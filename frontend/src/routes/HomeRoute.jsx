@@ -9,6 +9,7 @@ const HomeRoute = ({
   photos,
   updateToFavPhotoIds,
   setPhotoSelected,
+  displayPhotoDetails,
 
 }) => {
 
@@ -18,6 +19,7 @@ const HomeRoute = ({
       <TopNavigation
         topics={topics}
         favorites={favorites}
+        updateToFavPhotoIds={updateToFavPhotoIds}
       />
 
       <PhotoList
@@ -25,6 +27,7 @@ const HomeRoute = ({
         favorites={favorites} 
         updateToFavPhotoIds={updateToFavPhotoIds}
         setPhotoSelected={setPhotoSelected}
+        displayPhotoDetails={displayPhotoDetails}
       />
     </div>
   );

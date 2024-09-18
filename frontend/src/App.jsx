@@ -8,17 +8,12 @@ const App = () => {
 
   const {
     state,
-    setPhotoSelected,
     updateToFavPhotoIds,
-    closePhotoModal,
-    toggleLike,
+    setPhotoSelected,
+    displayPhotoDetails,
+    closePhotoModal
   } = useApplicationData();
 
-  console.log(state);
-
-  // const isLiked = photoId => likes.includes(photoId);
-
-  // const isFavorited = likes.length > 0;
 
   return (
     <div className="App">
@@ -29,15 +24,17 @@ const App = () => {
         photos={state.photos}
         updateToFavPhotoIds={updateToFavPhotoIds}
         setPhotoSelected={setPhotoSelected}
+        displayPhotoDetails={displayPhotoDetails}
       />
-      {/* <PhotoDetailsModal
-        photos={state.photos}
-        isVisible={state.isModalVisible}
-        closePhotoModal={closePhotoModal}
-        favorites={state.favorites} 
-        updateToFavPhotoIds={updateToFavPhotoIds}
+      <PhotoDetailsModal
+        state={state}
+        photo={state.selectPhoto}
+        favorites={state.favorites}
         setPhotoSelected={setPhotoSelected}
-      /> */}
+        updateToFavPhotoIds={updateToFavPhotoIds}
+        closePhotoModal={closePhotoModal}
+        displayPhotoDetails={displayPhotoDetails}
+      />
     </div>
     
   );

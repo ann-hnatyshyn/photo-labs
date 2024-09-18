@@ -6,23 +6,19 @@ export const ACTIONS = {
   FAV_PHOTO_REMOVED: 'FAV_PHOTO_REMOVED',
   SET_PHOTO_DATA: 'SET_PHOTO_DATA',
   SET_TOPIC_DATA: 'SET_TOPIC_DATA',
-  SELECT_PHOTO: 'SELECT_PHOTO',
-  DISPLAY_PHOTO_DETAILS: 'DISPLAY_PHOTO_DETAILS',
+  SELECT_PHOTO: 'SELECT_PHOTO', //open modal
+  // DISPLAY_PHOTO_DETAILS: 'DISPLAY_PHOTO_DETAILS'
   CLOSE_PHOTO_MODAL: 'CLOSE_PHOTO_MODAL',
-  TOGGLE_LIKE: 'TOGGLE_LIKE',
 };
 
 const initialState = {
   favorites: [],
   photos: [],
   topics: [],
-  selectedPhoto: [],
-  // topicState: [],
-  navBarLogo: true,
-  displayModal: false,
+  selectPhoto: [],
+  isModalVisible: false,
 };
 
-// const { photos, topics } = state;
 
 function reducer(state, action) {
   switch (action.type) {
@@ -52,21 +48,21 @@ function reducer(state, action) {
     case ACTIONS.SELECT_PHOTO: {
       return {
         ...state,
-        selectedPhoto: action.payload,
+        selectPhoto: action.payload.photo,
         isModalVisible: true,
       };
     }
 
-    case ACTIONS.DISPLAY_PHOTO_DETAILS: {
-      return {
-        ...state,
-        isModalVisible: action.payload.isVisible,
-        selectedPhoto: action.payload,
-      };
-    }
+    // case ACTIONS.DISPLAY_PHOTO_DETAILS: {
+    //   return {
+    //     ...state,
+    //     isModalVisible: action.payload.isVisible,
+    //     selectedPhoto: action.payload,
+    //   };
+    // }
 
     case ACTIONS.CLOSE_PHOTO_MODAL: {
-      return { ...state, isPhotoModalVisible: false };
+      return { ...state, isModalVisible: false };
     }
     default:
       throw new Error(
@@ -91,8 +87,8 @@ const useApplicationData = () => {
     dispatch({ type: ACTIONS.SELECT_PHOTO, payload: { photo } });
   };
 
-  const displayPhotoDetails = (isVisible) => {
-    dispatch({type: ACTIONS.DISPLAY_PHOTO_DETAILS, payload: { isVisible },});
+  const displayPhotoDetails = (isModalVisible) => {
+    dispatch({type: ACTIONS.DISPLAY_PHOTO_DETAILS, payload: { isModalVisible },});
   };
 
   const closePhotoModal = () => {
@@ -106,7 +102,7 @@ const useApplicationData = () => {
         dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: photos });
       })
       .catch((error) => console.error('Error fetching photos:', error));
-  } );
+  }, []);
 
   useEffect(() => {
     fetch('/api/topics')
@@ -119,11 +115,10 @@ const useApplicationData = () => {
 
   return {
     state,
+    updateToFavPhotoIds,
     setPhotoSelected,
     displayPhotoDetails,
-    closePhotoModal,
-    updateToFavPhotoIds,
-
+    closePhotoModal
   };
 };
 
