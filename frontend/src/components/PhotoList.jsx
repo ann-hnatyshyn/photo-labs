@@ -5,29 +5,30 @@ import PhotoListItem from './PhotoListItem';
 const PhotoList = ({
   photos,
   favorites,
+  isFavourite,
   updateToFavPhotoIds,
   setPhotoSelected,
-  displayPhotoDetails
 }) => {
 
   return (
-    <div className='photo-list'>
+    <ul className='photo-list'>
       {photos.map((photo) => (
         <PhotoListItem
           photo={photo}
           key={photo.id}
           id={photo.id}
           favorites={favorites}
-          setPhotoSelected={setPhotoSelected}
+          isFavourite={isFavourite}
           updateToFavPhotoIds={updateToFavPhotoIds}
-          displayPhotoDetails={displayPhotoDetails}
+          setPhotoSelected={setPhotoSelected}
           location={photo.location}
           imageSource={photo.urls.regular}
           username={photo.user.username}
           profile={photo.user.profile}
         />
       ))}
-    </div>
+  
+    </ul>
   );
 };
 

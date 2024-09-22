@@ -5,62 +5,65 @@ import PhotoFavButton from 'components/PhotoFavButton';
 import PhotoList from 'components/PhotoList';
 
 const PhotoDetailsModal = ({
-  state,
   photo,
   favorites,
+  isFavourite,
+  isModalVisible,
   setPhotoSelected,
   updateToFavPhotoIds,
-  displayPhotoDetails,
   closePhotoModal,
 }) => {
-  if (!state.setPhotoSelected|| !photo) {
+  if (!isModalVisible || !photo) {
     return null;
   }
 
+  const similarPhotos = photo.similar_photos;
+
   return (
     <div className='photo-details-modal'>
-      <div className='photo-details-modal__close-button' onClick={closePhotoModal} >
+      <button
+        className='photo-details-modal__close-button'
+        onClick={closePhotoModal}
+      >
         <img src={closeSymbol} alt='close symbol' />
-      </div>
-
-      <PhotoList 
-      photos={photo.similar_photos}
-      favorites={favorites} 
-      updateToFavPhotoIds={updateToFavPhotoIds} 
-      setPhotoSelected={setPhotoSelected}
-      />
-
-      <div className='fav-button-container'>
-        <PhotoFavButton
-          photoId={photo.Id}
-          favorites={favorites}
-          updateToFavPhotoIds={updateToFavPhotoIds}
-        />
-      </div>
+      </button>
 
       <div className='photo-details-modal__images'>
-        <img
-          className='photo-details-modal__image'
-          src={photo.urls.full}
-          alt={photo?.description || 'Photo'}
+        <PhotoFavButton
+          photo={photo}
+          favorites={favorites}
+          isFavourite={isFavourite}
+          setPhotoSelected={setPhotoSelected}
+          updateToFavPhotoIds={updateToFavPhotoIds}
         />
+
+        <img className='photo-details-modal__image' src={photo.urls.full} />
       </div>
 
-      <div className='photo-details-modal__top-bar'>
-        <div className='photo-details-modal__photographer-details'>
-          <div className='photo-details-modal__header'>
-            <img
-              className='photo-details-modal__photographer-profile'
-              src={photo.user.profile}
-              alt={`${photo?.user?.name}'s profile`} 
-            />
+      <div className='photo-details-modal__photographer-details'>
+        <div className='photo-list__user-details'>
+          <img className='photo-list__user-profile' src={photo.user.profile} />
+        </div>
+
+        <div className='photo-list__user-info'>
+          <span>{photo.user.username}</span>
+          <div className='photo-list__user-location'>
+            {photo.location.city}, {photo.location.country}
           </div>
-          <div className='photo-details-modal__photographer-info'>
-            {photo.user.username}
-            <div className='photo-details-modal__photographer-location'>
-              {photo.location.city}, {photo.location.country}
-            </div>
-          </div>
+        </div>
+         
+        <div className='photo-details-modal__header'>
+          <strong>Similar Photos</strong>
+        </div>
+
+        <div className='photo-details-modal__top-bar'>
+          <PhotoList
+            photos={similarPhotos}
+            favorites={favorites}
+            isFavourite={isFavourite}
+            updateToFavPhotoIds={updateToFavPhotoIds}
+            setPhotoSelected={setPhotoSelected}
+          />
         </div>
       </div>
     </div>

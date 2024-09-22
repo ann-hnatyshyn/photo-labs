@@ -1,24 +1,19 @@
 import React from 'react';
-import FavIcon from './FavIcon';
+import FavBadge from './FavBadge';
 import '../styles/PhotoFavButton.scss';
 
-const PhotoFavButton = ({
-  id,
-  favorites, 
-  updateToFavPhotoIds,
-  setPhotoSelected
-}) => {
-
+const PhotoFavButton = ({ id, updateToFavPhotoIds, isFavourite, isFavPhotoExist }) => {
+  const handleClick = () => {
+    updateToFavPhotoIds(id);
+    console.log(`PhotoFavButton clicked for photoId: ${id}`);
+  };
   return (
-  <div className="photo-list__fav-icon">
-    <div className="photo-list__fav-icon-svg"  onClick={() => updateToFavPhotoIds({id})}>
-        <FavIcon
-        setPhotoSelected={setPhotoSelected}
-        favorites={favorites} 
-        />
+    <div className='photo-list__fav-icon'>
+      <div className='photo-list__fav-icon-svg' onClick={handleClick}>
+        <FavBadge isFavPhotoExist={isFavPhotoExist} />
+      </div>
     </div>
-  </div>
   );
-}
+};
 
 export default PhotoFavButton;

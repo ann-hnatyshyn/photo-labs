@@ -6,8 +6,7 @@ export const ACTIONS = {
   FAV_PHOTO_REMOVED: 'FAV_PHOTO_REMOVED',
   SET_PHOTO_DATA: 'SET_PHOTO_DATA',
   SET_TOPIC_DATA: 'SET_TOPIC_DATA',
-  SELECT_PHOTO: 'SELECT_PHOTO', //open modal
-  // DISPLAY_PHOTO_DETAILS: 'DISPLAY_PHOTO_DETAILS'
+  SELECT_PHOTO: 'SELECT_PHOTO',
   CLOSE_PHOTO_MODAL: 'CLOSE_PHOTO_MODAL',
 };
 
@@ -22,6 +21,7 @@ const initialState = {
 
 function reducer(state, action) {
   switch (action.type) {
+
     case ACTIONS.FAV_PHOTO_ADDED: {
       const photoId = action.payload;
       return {
@@ -29,7 +29,6 @@ function reducer(state, action) {
         favorites: [...state.favorites, photoId],
       };
     }
-
     case ACTIONS.FAV_PHOTO_REMOVED: {
       const photoId = action.payload;
       return {
@@ -40,27 +39,16 @@ function reducer(state, action) {
     case ACTIONS.SET_PHOTO_DATA: {
       return { ...state, photos: action.payload };
     }
-
     case ACTIONS.SET_TOPIC_DATA: {
       return { ...state, topics: action.payload };
     }
-
     case ACTIONS.SELECT_PHOTO: {
       return {
         ...state,
-        selectPhoto: action.payload.photo,
+        selectPhoto: action.payload,
         isModalVisible: true,
       };
     }
-
-    // case ACTIONS.DISPLAY_PHOTO_DETAILS: {
-    //   return {
-    //     ...state,
-    //     isModalVisible: action.payload.isVisible,
-    //     selectedPhoto: action.payload,
-    //   };
-    // }
-
     case ACTIONS.CLOSE_PHOTO_MODAL: {
       return { ...state, isModalVisible: false };
     }
@@ -77,18 +65,14 @@ const useApplicationData = () => {
   const updateToFavPhotoIds = (photo) => {
     const photoId = photo.id;
     if (state.favorites.includes(photoId)) {
-      dispatch({ type: ACTIONS.FAV_PHOTO_REMOVED, payload: { photoId } });
+      dispatch({ type: ACTIONS.FAV_PHOTO_REMOVED, payload: {photoId}});
     } else {
-      dispatch({ type: ACTIONS.FAV_PHOTO_ADDED, payload: { photoId } });
+      dispatch({ type: ACTIONS.FAV_PHOTO_ADDED, payload: {photoId}});
     }
   };
 
   const setPhotoSelected = (photo) => {
-    dispatch({ type: ACTIONS.SELECT_PHOTO, payload: { photo } });
-  };
-
-  const displayPhotoDetails = (isModalVisible) => {
-    dispatch({type: ACTIONS.DISPLAY_PHOTO_DETAILS, payload: { isModalVisible },});
+    dispatch({ type: ACTIONS.SELECT_PHOTO, payload: photo });
   };
 
   const closePhotoModal = () => {
@@ -117,7 +101,6 @@ const useApplicationData = () => {
     state,
     updateToFavPhotoIds,
     setPhotoSelected,
-    displayPhotoDetails,
     closePhotoModal
   };
 };

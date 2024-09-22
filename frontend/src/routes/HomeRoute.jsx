@@ -5,29 +5,30 @@ import PhotoList from 'components/PhotoList';
 
 const HomeRoute = ({
   favorites,
+  isFavourite,
   topics,
   photos,
   updateToFavPhotoIds,
   setPhotoSelected,
-  displayPhotoDetails,
-
 }) => {
 
+  const isFavPhotoExist = favorites.length > 0;
 
   return (
     <div className='home-route'>
       <TopNavigation
         topics={topics}
         favorites={favorites}
+        isFavourite={isFavourite}
+        isFavPhotoExist={isFavPhotoExist}
         updateToFavPhotoIds={updateToFavPhotoIds}
       />
-
       <PhotoList
         photos={photos}
-        favorites={favorites} 
+        favorites={favorites}
+        isFavourite={isFavourite}
         updateToFavPhotoIds={updateToFavPhotoIds}
         setPhotoSelected={setPhotoSelected}
-        displayPhotoDetails={displayPhotoDetails}
       />
     </div>
   );
