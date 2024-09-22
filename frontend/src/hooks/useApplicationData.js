@@ -18,10 +18,8 @@ const initialState = {
   isModalVisible: false,
 };
 
-
 function reducer(state, action) {
   switch (action.type) {
-
     case ACTIONS.FAV_PHOTO_ADDED: {
       const photoId = action.payload;
       return {
@@ -65,9 +63,9 @@ const useApplicationData = () => {
   const updateToFavPhotoIds = (photo) => {
     const photoId = photo.id;
     if (state.favorites.includes(photoId)) {
-      dispatch({ type: ACTIONS.FAV_PHOTO_REMOVED, payload: {photoId}});
+      dispatch({ type: ACTIONS.FAV_PHOTO_REMOVED, payload: { photoId } });
     } else {
-      dispatch({ type: ACTIONS.FAV_PHOTO_ADDED, payload: {photoId}});
+      dispatch({ type: ACTIONS.FAV_PHOTO_ADDED, payload: { photoId } });
     }
   };
 
@@ -101,7 +99,7 @@ const useApplicationData = () => {
     state,
     updateToFavPhotoIds,
     setPhotoSelected,
-    closePhotoModal
+    closePhotoModal,
   };
 };
 

@@ -9,7 +9,6 @@ const PhotoList = ({
   updateToFavPhotoIds,
   setPhotoSelected,
 }) => {
-
   return (
     <ul className='photo-list'>
       {photos.map((photo) => (
@@ -27,7 +26,6 @@ const PhotoList = ({
           profile={photo.user.profile}
         />
       ))}
-  
     </ul>
   );
 };

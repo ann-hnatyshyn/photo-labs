@@ -9,8 +9,8 @@ const App = () => {
     useApplicationData();
 
   const isFavourite = (photo_id) => {
-      return state.favorites.includes(photo_id);
-    }  
+    return state.favorites.includes(photo_id);
+  };
 
   return (
     <div className='App'>

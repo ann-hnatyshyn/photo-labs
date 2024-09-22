@@ -50,10 +50,9 @@ const PhotoDetailsModal = ({
           <div className='photo-list__user-location'>
             {photo.location.city}, {photo.location.country}
           </div>
-        </div>
-         
-        <div className='photo-details-modal__header'>
-          <strong>Similar Photos</strong>
+          <div className='photo-details-modal__header'>
+            <strong>Similar Photos</strong>
+          </div>
         </div>
 
         <div className='photo-details-modal__top-bar'>

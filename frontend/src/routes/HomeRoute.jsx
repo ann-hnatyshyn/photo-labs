@@ -11,7 +11,6 @@ const HomeRoute = ({
   updateToFavPhotoIds,
   setPhotoSelected,
 }) => {
-
   const isFavPhotoExist = favorites.length > 0;
 
   return (
