@@ -18,6 +18,7 @@ const PhotoListItem = ({
     <div className='photo-list__item'>
       <PhotoFavButton
         id={id}
+        photo={photo}
         favorites={favorites}
         isFavourite={isFavourite}
         updateToFavPhotoIds={updateToFavPhotoIds}

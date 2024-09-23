@@ -10,6 +10,7 @@ const HomeRoute = ({
   photos,
   updateToFavPhotoIds,
   setPhotoSelected,
+  getPhotosByTopics
 }) => {
   const isFavPhotoExist = favorites.length > 0;
 
@@ -17,6 +18,7 @@ const HomeRoute = ({
     <div className='home-route'>
       <TopNavigation
         topics={topics}
+        getPhotosByTopics={getPhotosByTopics}
         favorites={favorites}
         isFavourite={isFavourite}
         isFavPhotoExist={isFavPhotoExist}

@@ -1,11 +1,10 @@
 import React from 'react';
 import '../styles/TopicListItem.scss';
 
-const TopicListItem = ({ setTopics, title }) => {
+const TopicListItem = ({ topics, getPhotosByTopics }) => {
   return (
     <div className='topic-list__item'>
-      <span>{setTopics}</span>
-      <span>{title}</span>
+      <div onClick={() => getPhotosByTopics(topics.id)}> {topics.title} </div>
     </div>
   );
 };

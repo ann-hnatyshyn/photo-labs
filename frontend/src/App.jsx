@@ -5,7 +5,7 @@ import PhotoDetailsModal from 'routes/PhotoDetailsModal';
 import useApplicationData from 'hooks/useApplicationData';
 
 const App = () => {
-  const { state, updateToFavPhotoIds, setPhotoSelected, closePhotoModal } =
+  const { state, updateToFavPhotoIds, setPhotoSelected, closePhotoModal, getPhotosByTopics } =
     useApplicationData();
 
   const isFavourite = (photo_id) => {
@@ -16,6 +16,7 @@ const App = () => {
     <div className='App'>
       <HomeRoute
         topics={state.topics}
+        getPhotosByTopics={getPhotosByTopics}
         photos={state.photos}
         favorites={state.favorites}
         isFavourite={isFavourite}

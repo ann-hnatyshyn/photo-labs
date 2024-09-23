@@ -8,6 +8,7 @@ export const ACTIONS = {
   SET_TOPIC_DATA: 'SET_TOPIC_DATA',
   SELECT_PHOTO: 'SELECT_PHOTO',
   CLOSE_PHOTO_MODAL: 'CLOSE_PHOTO_MODAL',
+  GET_PHOTOS_BY_TOPICS: 'GET_PHOTOS_BY_TOPICS'
 };
 
 const initialState = {
@@ -15,11 +16,13 @@ const initialState = {
   photos: [],
   topics: [],
   selectPhoto: [],
+  getPhotosByTopics: [],
   isModalVisible: false,
 };
 
 function reducer(state, action) {
   switch (action.type) {
+
     case ACTIONS.FAV_PHOTO_ADDED: {
       const photoId = action.payload;
       return {
@@ -50,6 +53,10 @@ function reducer(state, action) {
     case ACTIONS.CLOSE_PHOTO_MODAL: {
       return { ...state, isModalVisible: false };
     }
+    case ACTIONS.GET_PHOTOS_BY_TOPICS: {
+      return { ...state, getPhotosByTopics: topic_id};
+    }
+
     default:
       throw new Error(
         `Tried to reduce with unsupported action type: ${action.type}`
@@ -60,17 +67,22 @@ function reducer(state, action) {
 const useApplicationData = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  const updateToFavPhotoIds = (photo) => {
-    const photoId = photo.id;
+  const updateToFavPhotoIds = (photoId) => {
     if (state.favorites.includes(photoId)) {
-      dispatch({ type: ACTIONS.FAV_PHOTO_REMOVED, payload: { photoId } });
+      dispatch({ type: ACTIONS.FAV_PHOTO_REMOVED, payload: photoId });
     } else {
-      dispatch({ type: ACTIONS.FAV_PHOTO_ADDED, payload: { photoId } });
+      dispatch({ type: ACTIONS.FAV_PHOTO_ADDED, payload: photoId });
     }
   };
 
   const setPhotoSelected = (photo) => {
     dispatch({ type: ACTIONS.SELECT_PHOTO, payload: photo });
+  };
+
+  const getPhotosByTopics = (topicId) => {
+    if (state.getPhotosByTopics === state.photos.topicId){
+    dispatch({ type: ACTIONS.GET_PHOTOS_BY_TOPICS, payload: topicId})
+    }
   };
 
   const closePhotoModal = () => {
@@ -100,6 +112,7 @@ const useApplicationData = () => {
     updateToFavPhotoIds,
     setPhotoSelected,
     closePhotoModal,
+    getPhotosByTopics
   };
 };
 
