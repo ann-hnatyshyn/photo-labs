@@ -23,6 +23,13 @@ cd backend
 npm start
 ```
 
+Parent / Child relationship
+
+![parentChild](https://github.com/user-attachments/assets/5ded6a52-171a-43ba-a1f5-afdcc58ed3bf)
+
+
+
+
 HomeRoute: 
 
 ![homeroute](https://github.com/user-attachments/assets/8636d9ab-adad-4145-bd2e-ae34b00d024b)
