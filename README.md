@@ -28,9 +28,13 @@ HomeRoute:
 ![homeroute](https://github.com/user-attachments/assets/8636d9ab-adad-4145-bd2e-ae34b00d024b)
 
 
-Photomodal: 
+
+
+Photo modal: 
 
 <img width="1411" alt="photodetailsmodal" src="https://github.com/user-attachments/assets/c43a7b4a-ee28-4122-8c63-c17e8c978cc6">
+
+
 
 
 Favourite Button:
