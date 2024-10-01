@@ -5,6 +5,12 @@ The PhotoLabs project, developed for the Web Development React course, is a Sing
 # Photolabs
 
 
+## Key Features:
+
+Users can like or unlike as many photos as they wish.
+When viewing a selected photo, users are also shown similar images to explore.
+
+
 
 ![parentChild](https://github.com/user-attachments/assets/5ded6a52-171a-43ba-a1f5-afdcc58ed3bf)
 
@@ -52,7 +58,3 @@ npm start
 ```
 
 
-## Key Features:
-
-Users can like or unlike as many photos as they wish.
-When viewing a selected photo, users are also shown similar images to explore.
