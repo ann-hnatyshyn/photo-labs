@@ -50,3 +50,9 @@ Read `backend/readme` for further setup details.
 cd backend
 npm start
 ```
+
+
+## Key Features:
+
+Users can like or unlike as many photos as they wish.
+When viewing a selected photo, users are also shown similar images to explore.
