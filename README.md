@@ -4,6 +4,33 @@ The PhotoLabs project, developed for the Web Development React course, is a Sing
 
 # Photolabs
 
+
+
+![parentChild](https://github.com/user-attachments/assets/5ded6a52-171a-43ba-a1f5-afdcc58ed3bf)
+
+
+
+
+Home Page:
+
+![homeroute](https://github.com/user-attachments/assets/8636d9ab-adad-4145-bd2e-ae34b00d024b)
+
+
+
+
+Selected Photo:
+
+<img width="1411" alt="photodetailsmodal" src="https://github.com/user-attachments/assets/c43a7b4a-ee28-4122-8c63-c17e8c978cc6">
+
+
+
+
+Favorited Photo:
+
+![photofavbutton](https://github.com/user-attachments/assets/27dcb93f-028b-42fb-9b17-0ff086efae14)
+
+
+
 ## Setup
 
 Install dependencies with `npm install` in each respective `/frontend` and `/backend`.
@@ -23,28 +50,3 @@ Read `backend/readme` for further setup details.
 cd backend
 npm start
 ```
-
-Parent / Child relationship
-
-![parentChild](https://github.com/user-attachments/assets/5ded6a52-171a-43ba-a1f5-afdcc58ed3bf)
-
-
-
-
-HomeRoute: 
-
-![homeroute](https://github.com/user-attachments/assets/8636d9ab-adad-4145-bd2e-ae34b00d024b)
-
-
-
-
-Photo modal: 
-
-<img width="1411" alt="photodetailsmodal" src="https://github.com/user-attachments/assets/c43a7b4a-ee28-4122-8c63-c17e8c978cc6">
-
-
-
-
-Favourite Button:
-
-![photofavbutton](https://github.com/user-attachments/assets/27dcb93f-028b-42fb-9b17-0ff086efae14)
