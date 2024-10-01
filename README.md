@@ -14,13 +14,6 @@ When viewing a selected photo, users are also shown similar images to explore.
 
 
 
-
-
-![parentChild](https://github.com/user-attachments/assets/5ded6a52-171a-43ba-a1f5-afdcc58ed3bf)
-
-
-
-
 Home Page:
 
 ![homeroute](https://github.com/user-attachments/assets/8636d9ab-adad-4145-bd2e-ae34b00d024b)
@@ -42,6 +35,12 @@ Favorited Photo:
 
 
 ## Setup
+
+
+![parentChild](https://github.com/user-attachments/assets/5ded6a52-171a-43ba-a1f5-afdcc58ed3bf)
+
+
+
 
 Install dependencies with `npm install` in each respective `/frontend` and `/backend`.
 
