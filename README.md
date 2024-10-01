@@ -2,13 +2,17 @@
 
 The PhotoLabs project, developed for the Web Development React course, is a Single Page Application built with React and Express. It features an interactive photo gallery where users can browse, view, and filter images by topic, providing a seamless experience for exploring various photo collections.
 
-# Photolabs
-
-
 ## Key Features:
 
 Users can like or unlike as many photos as they wish.
 When viewing a selected photo, users are also shown similar images to explore.
+
+
+
+# Photolabs
+
+
+
 
 
 
