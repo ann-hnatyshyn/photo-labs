@@ -47,7 +47,6 @@ npm start
 
 ## [Backend] Running Backend Servier
 
-Read `backend/readme` for further setup details.
 
 ```sh
 cd backend
@@ -60,6 +59,8 @@ Restart the Database:
 Before running the application, ensure that the database is reset by navigating to:
 http://localhost:8001/api/debug/reset
 This will restart the database and prepare it for use.
+
+**Read `backend/readme` for further setup details.
 ```
 
 ## Add the Required Database:
