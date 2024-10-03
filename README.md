@@ -36,12 +36,6 @@ Favorited Photo:
 
 ## Setup
 
-
-![parentChild](https://github.com/user-attachments/assets/5ded6a52-171a-43ba-a1f5-afdcc58ed3bf)
-
-
-
-
 Install dependencies with `npm install` in each respective `/frontend` and `/backend`.
 
 ## [Frontend] Running Webpack Development Server
@@ -73,4 +67,5 @@ This will restart the database and prepare it for use.
 Make sure the necessary database is added to your local environment. Follow the steps outlined in the backend README.md to set up the database correctly.
 ```
 
+![parentChild](https://github.com/user-attachments/assets/5ded6a52-171a-43ba-a1f5-afdcc58ed3bf)
 
