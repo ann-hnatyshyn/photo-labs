@@ -51,6 +51,19 @@ cd backend
 npm start
 ```
 
+## Additional Setup Instructions:
+```sh
+Restart the Database:
+Before running the application, ensure that the database is reset by navigating to:
+http://localhost:8001/api/debug/reset
+This will restart the database and prepare it for use.
+```
+
+## Add the Required Database:
+```sh
+Make sure the necessary database is added to your local environment. Follow the steps outlined in the backend README.md to set up the database correctly.
+```
+
 ## Key Features:
 
 Users can like or unlike as many photos as they wish.
