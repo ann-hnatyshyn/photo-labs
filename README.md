@@ -25,7 +25,8 @@ Home Page:
 
 Selected Photo:
 
-<img width="1411" alt="photodetailsmodal" src="https://github.com/user-attachments/assets/c43a7b4a-ee28-4122-8c63-c17e8c978cc6">
+
+<img width="1114" alt="Screenshot 2024-10-07 at 10 03 54 AM" src="https://github.com/user-attachments/assets/510c9a6e-ba9d-485a-88dd-7825ff0897aa">
 
 
 
