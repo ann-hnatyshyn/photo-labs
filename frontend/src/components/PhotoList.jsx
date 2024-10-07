@@ -8,12 +8,15 @@ const PhotoList = ({
   isFavourite,
   updateToFavPhotoIds,
   setPhotoSelected,
+  filteredPhotos
 }) => {
   return (
     <ul className='photo-list'>
+
       {photos.map((photo) => (
         <PhotoListItem
           photo={photo}
+          filteredPhotos={filteredPhotos}
           key={photo.id}
           id={photo.id}
           favorites={favorites}
@@ -26,6 +29,7 @@ const PhotoList = ({
           profile={photo.user.profile}
         />
       ))}
+      
     </ul>
   );
 };

@@ -40,6 +40,7 @@ const PhotoDetailsModal = ({
       </div>
 
       <div className='photo-details-modal__photographer-details'>
+        
         <div className='photo-list__user-details'>
           <img className='photo-list__user-profile' src={photo.user.profile} />
         </div>
@@ -49,12 +50,13 @@ const PhotoDetailsModal = ({
             {photo.location.city}, {photo.location.country}
           </div>
         </div>
+        
       </div>
-
-      <div className='photo-details-modal__top-bar'>
         <div className='photo-details-modal__header'>
-          <strong>Similar Photos</strong>
-          <div className='photo-details-modal__photographer-info'>
+          <div>Similar Photos</div>
+        
+          
+        <div className='photo-details-modal__top-bar'>
           <PhotoList
             photos={similarPhotos}
             favorites={favorites}
@@ -62,9 +64,8 @@ const PhotoDetailsModal = ({
             updateToFavPhotoIds={updateToFavPhotoIds}
             setPhotoSelected={setPhotoSelected}
           />
-          </div>
         </div>
-      </div>
+        </div>
     </div>
   );
 };

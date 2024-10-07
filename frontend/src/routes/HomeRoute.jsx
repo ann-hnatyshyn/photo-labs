@@ -8,17 +8,21 @@ const HomeRoute = ({
   isFavourite,
   topics,
   photos,
+  filteredPhotos,
   updateToFavPhotoIds,
   setPhotoSelected,
-  getPhotosByTopics
+  photosByTopic,
 }) => {
   const isFavPhotoExist = favorites.length > 0;
+
+  
 
   return (
     <div className='home-route'>
       <TopNavigation
         topics={topics}
-        getPhotosByTopics={getPhotosByTopics}
+        photosByTopic={photosByTopic}
+        filteredPhotos={filteredPhotos}
         favorites={favorites}
         isFavourite={isFavourite}
         isFavPhotoExist={isFavPhotoExist}
@@ -30,6 +34,7 @@ const HomeRoute = ({
         isFavourite={isFavourite}
         updateToFavPhotoIds={updateToFavPhotoIds}
         setPhotoSelected={setPhotoSelected}
+        filteredPhotos={filteredPhotos}
       />
     </div>
   );

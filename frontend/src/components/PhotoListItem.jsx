@@ -4,6 +4,7 @@ import PhotoFavButton from './PhotoFavButton';
 
 const PhotoListItem = ({
   photo,
+  filteredPhotos,
   id,
   favorites,
   isFavourite,
@@ -16,6 +17,7 @@ const PhotoListItem = ({
 }) => {
   return (
     <div className='photo-list__item'>
+      
       <PhotoFavButton
         id={id}
         photo={photo}

@@ -1,3 +1,5 @@
+import photos from 'mocks/photos';
+import topics from 'mocks/topics';
 import { useReducer } from 'react';
 import { useEffect } from 'react';
 
@@ -8,7 +10,8 @@ export const ACTIONS = {
   SET_TOPIC_DATA: 'SET_TOPIC_DATA',
   SELECT_PHOTO: 'SELECT_PHOTO',
   CLOSE_PHOTO_MODAL: 'CLOSE_PHOTO_MODAL',
-  GET_PHOTOS_BY_TOPICS: 'GET_PHOTOS_BY_TOPICS'
+  SELECTED_TOPIC: 'SELECTED_TOPIC',
+  FILTERED_PHOTOS: 'FILTERED_PHOTOS',
 };
 
 const initialState = {
@@ -16,13 +19,13 @@ const initialState = {
   photos: [],
   topics: [],
   selectPhoto: [],
-  getPhotosByTopics: [],
+  selectedTopic: null,
+  filteredPhotos: [],
   isModalVisible: false,
 };
 
 function reducer(state, action) {
   switch (action.type) {
-
     case ACTIONS.FAV_PHOTO_ADDED: {
       const photoId = action.payload;
       return {
@@ -43,6 +46,15 @@ function reducer(state, action) {
     case ACTIONS.SET_TOPIC_DATA: {
       return { ...state, topics: action.payload };
     }
+    case ACTIONS.FILTERED_PHOTOS: {
+      return {
+        ...state,
+        filteredPhotos: state.photos.filter((photo) => {
+          console.log("Filtering photos for topic:", action.payload);
+          return photo.topic_id === action.payload;
+        }),
+      };
+    }
     case ACTIONS.SELECT_PHOTO: {
       return {
         ...state,
@@ -53,10 +65,6 @@ function reducer(state, action) {
     case ACTIONS.CLOSE_PHOTO_MODAL: {
       return { ...state, isModalVisible: false };
     }
-    case ACTIONS.GET_PHOTOS_BY_TOPICS: {
-      return { ...state, getPhotosByTopics: topic_id};
-    }
-
     default:
       throw new Error(
         `Tried to reduce with unsupported action type: ${action.type}`
@@ -79,10 +87,13 @@ const useApplicationData = () => {
     dispatch({ type: ACTIONS.SELECT_PHOTO, payload: photo });
   };
 
-  const getPhotosByTopics = (topicId) => {
-    if (state.getPhotosByTopics === state.photos.topicId){
-    dispatch({ type: ACTIONS.GET_PHOTOS_BY_TOPICS, payload: topicId})
-    }
+  const filteredPhotos = (topicId) => {
+    dispatch({type: ACTIONS.FILTERED_PHOTOS,payload: topicId,});
+  };
+
+  const photosByTopic = (topicId) => {
+    console.log('Topic clicked:', topicId);
+    dispatch({ type: ACTIONS.FILTERED_PHOTOS, payload: topicId });
   };
 
   const closePhotoModal = () => {
@@ -107,13 +118,23 @@ const useApplicationData = () => {
       .catch((error) => console.error('Error fetching topics:', error));
   }, []);
 
+  useEffect(() => {
+    const topic_id = state.selectedTopic;
+    if (topic_id) {
+      fetch(`/api/topics/photos/${topic_id}`)
+        .then((response) => response.json())
+        .then((data => {dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: data })})
+    )}
+  }, [state.selectedTopic]);
+      
   return {
     state,
     updateToFavPhotoIds,
     setPhotoSelected,
     closePhotoModal,
-    getPhotosByTopics
-  };
+    photosByTopic,
+    filteredPhotos,
+  }
 };
 
 export default useApplicationData;
