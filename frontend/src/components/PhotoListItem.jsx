@@ -27,7 +27,9 @@ const PhotoListItem = ({
       />
       <img
         className='photo-list__image'
+        key={photo.id}
         src={imageSource}
+        alt={photo.description}
         onClick={() => setPhotoSelected(photo)}
       />
       <div className='photo-list__user-details'>

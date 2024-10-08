@@ -1,5 +1,3 @@
-import photos from 'mocks/photos';
-import topics from 'mocks/topics';
 import { useReducer } from 'react';
 import { useEffect } from 'react';
 
@@ -121,10 +119,14 @@ const useApplicationData = () => {
   useEffect(() => {
     const topic_id = state.selectedTopic;
     if (topic_id) {
+      console.log('Fetching photos for topic:', topic_id);
       fetch(`/api/topics/photos/${topic_id}`)
         .then((response) => response.json())
-        .then((data => {dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: data })})
-    )}
+        .then((data) => {
+          console.log("Fetched photos data:", data);
+          dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: data });
+        });
+    }
   }, [state.selectedTopic]);
       
   return {
