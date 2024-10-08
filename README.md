@@ -1,19 +1,17 @@
-<<<<<<< HEAD
+
 # react-photolabs
 
 The PhotoLabs project, developed for the Web Development React course, is a Single Page Application built with React and Express. It features an interactive photo gallery where users can browse, view, and filter images by topic, providing a seamless experience for exploring various photo collections.
-=======
-# react-Photolabs
->>>>>>> 673230184706704fbca4962db8376399716b8796
-
-The PhotoLabs project, developed for the Web Development React course, is a Single Page Application built with React and Express. It features an interactive photo gallery where users can browse, view, and filter images by topic, providing a seamless experience for exploring various photo collections.
-
-# Photolabs API
 
 
+## Key Features:
 
 
-![parentChild](https://github.com/user-attachments/assets/5ded6a52-171a-43ba-a1f5-afdcc58ed3bf)
+Users can like or unlike as many photos as they wish.
+When viewing a selected photo, users are also shown similar images to explore.
+
+
+
 
 
 
@@ -27,7 +25,8 @@ Home Page:
 
 Selected Photo:
 
-<img width="1411" alt="photodetailsmodal" src="https://github.com/user-attachments/assets/c43a7b4a-ee28-4122-8c63-c17e8c978cc6">
+
+<img width="1114" alt="Screenshot 2024-10-07 at 10 03 54 AM" src="https://github.com/user-attachments/assets/510c9a6e-ba9d-485a-88dd-7825ff0897aa">
 
 
 
@@ -85,7 +84,7 @@ cd backend
 npm start
 ```
 
-<<<<<<< HEAD
+
 ## Additional Setup Instructions:
 ```sh
 Restart the Database:
@@ -93,52 +92,12 @@ Before running the application, ensure that the database is reset by navigating 
 http://localhost:8001/api/debug/reset
 This will restart the database and prepare it for use.
 ```
-=======
->>>>>>> 673230184706704fbca4962db8376399716b8796
 
-## Add the Required Database:
-```sh
-Make sure the necessary database is added to your local environment. Follow the steps outlined in the backend README.md to set up the database correctly.
-```
 
-## Key Features:
 
-<<<<<<< HEAD
-Users can like or unlike as many photos as they wish.
-When viewing a selected photo, users are also shown similar images to explore.
-=======
-
-## Key Features:
-
-Users can like or unlike as many photos as they wish.
-When viewing a selected photo, users are also shown similar images to explore.
+![parentChild](https://github.com/user-attachments/assets/5ded6a52-171a-43ba-a1f5-afdcc58ed3bf)
 
 
 
 
 
-Home Page:
-
-![homeroute](https://github.com/user-attachments/assets/8636d9ab-adad-4145-bd2e-ae34b00d024b)
-
-
-
-
-Selected Photo:
-
-<img width="1411" alt="photodetailsmodal" src="https://github.com/user-attachments/assets/c43a7b4a-ee28-4122-8c63-c17e8c978cc6">
-
-
-
-
-Favorited Photo:
-
-![photofavbutton](https://github.com/user-attachments/assets/27dcb93f-028b-42fb-9b17-0ff086efae14)
-
-
-
-
-
-
-
->>>>>>> 673230184706704fbca4962db8376399716b8796
