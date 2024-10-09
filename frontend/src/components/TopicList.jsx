@@ -3,9 +3,6 @@ import '../styles/TopicList.scss';
 import TopicListItem from './TopicListItem';
 
 const TopicList = ({ topics, photosByTopic }) => { 
-  if (!Array.isArray(topics)) {
-    return null; 
-  }
   return (
     <div className='top-nav-bar__topic-list'>
       {topics.map((topic) => {

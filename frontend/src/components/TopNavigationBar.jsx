@@ -3,11 +3,13 @@ import '../styles/TopNavigationBar.scss';
 import TopicList from './TopicList';
 import FavBadge from './FavBadge';
 
-const TopNavigation = ({ topics, photosByTopic, isFavPhotoExist, filteredPhotos }) => {
+const TopNavigation = ({ topics, isFavPhotoExist, photosByFilter, photosByTopic }) => {
   return (
     <div className='top-nav-bar'>
-      <span className='top-nav-bar__logo'>PhotoLabs</span>
-      <TopicList topics={topics} photosByTopic={photosByTopic} filteredPhotos={filteredPhotos}/>
+      <span 
+      onClick={photosByFilter}
+      className='top-nav-bar__logo'>PhotoLabs</span>
+      <TopicList topics={topics} photosByTopic={photosByTopic}/>
       <FavBadge isFavPhotoExist={isFavPhotoExist} />
     </div>
   );

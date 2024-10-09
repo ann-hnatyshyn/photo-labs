@@ -5,7 +5,7 @@ import PhotoDetailsModal from 'routes/PhotoDetailsModal';
 import useApplicationData from 'hooks/useApplicationData';
 
 const App = () => {
-  const { state, updateToFavPhotoIds, setPhotoSelected, closePhotoModal, photosByTopic, filteredPhotos } =
+  const { state, updateToFavPhotoIds, setPhotoSelected, closePhotoModal, photosByTopic, photosByFilter } =
     useApplicationData();
 
   const isFavourite = (photo_id) => {
@@ -18,7 +18,7 @@ const App = () => {
         topics={state.topics}
         photosByTopic={photosByTopic}
         photos={state.photos}
-        filteredPhotos={filteredPhotos}
+        photosByFilter={photosByFilter}
         favorites={state.favorites}
         isFavourite={isFavourite}
         updateToFavPhotoIds={updateToFavPhotoIds}
@@ -26,6 +26,8 @@ const App = () => {
       />
       <PhotoDetailsModal
         photo={state.selectPhoto}
+        photosByFilter={photosByFilter}
+        photosByTopic={photosByTopic}
         favorites={state.favorites}
         isFavourite={isFavourite}
         isModalVisible={state.isModalVisible}

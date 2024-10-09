@@ -2,9 +2,10 @@ import React from 'react';
 import '../styles/PhotoListItem.scss';
 import PhotoFavButton from './PhotoFavButton';
 
+
+
 const PhotoListItem = ({
   photo,
-  filteredPhotos,
   id,
   favorites,
   isFavourite,
@@ -15,6 +16,8 @@ const PhotoListItem = ({
   username,
   profile,
 }) => {
+
+
   return (
     <div className='photo-list__item'>
       

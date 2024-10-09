@@ -18,25 +18,20 @@ const initialState = {
   topics: [],
   selectPhoto: [],
   selectedTopic: null,
-  filteredPhotos: [],
+  filteredPhotos: true,
   isModalVisible: false,
 };
 
 function reducer(state, action) {
   switch (action.type) {
+
     case ACTIONS.FAV_PHOTO_ADDED: {
       const photoId = action.payload;
-      return {
-        ...state,
-        favorites: [...state.favorites, photoId],
-      };
+      return {...state,favorites: [...state.favorites, photoId],};
     }
     case ACTIONS.FAV_PHOTO_REMOVED: {
       const photoId = action.payload;
-      return {
-        ...state,
-        favorites: state.favorites.filter((id) => id !== photoId),
-      };
+      return {...state, favorites: state.favorites.filter((id) => id !== photoId),};
     }
     case ACTIONS.SET_PHOTO_DATA: {
       return { ...state, photos: action.payload };
@@ -45,20 +40,13 @@ function reducer(state, action) {
       return { ...state, topics: action.payload };
     }
     case ACTIONS.FILTERED_PHOTOS: {
-      return {
-        ...state,
-        filteredPhotos: state.photos.filter((photo) => {
-          console.log("Filtering photos for topic:", action.payload);
-          return photo.topic_id === action.payload;
-        }),
-      };
+      return {...state, filteredPhotos: action.payload};
+    }
+    case ACTIONS.SELECTED_TOPIC: {
+      return {...state, selectedTopic: action.payload};
     }
     case ACTIONS.SELECT_PHOTO: {
-      return {
-        ...state,
-        selectPhoto: action.payload,
-        isModalVisible: true,
-      };
+      return {...state, selectPhoto: action.payload,isModalVisible: true,};
     }
     case ACTIONS.CLOSE_PHOTO_MODAL: {
       return { ...state, isModalVisible: false };
@@ -85,14 +73,13 @@ const useApplicationData = () => {
     dispatch({ type: ACTIONS.SELECT_PHOTO, payload: photo });
   };
 
-  const filteredPhotos = (topicId) => {
-    dispatch({type: ACTIONS.FILTERED_PHOTOS,payload: topicId,});
+  const photosByFilter = () => {
+    dispatch({type: ACTIONS.FILTERED_PHOTOS,payload: true,});
   };
 
-  const photosByTopic = (topicId) => {
-    console.log('Topic clicked:', topicId);
-    dispatch({ type: ACTIONS.FILTERED_PHOTOS, payload: topicId });
-  };
+  const photosByTopic = (topic_id) => {
+    dispatch({type: ACTIONS.SELECTED_TOPIC, payload: topic_id})
+  }
 
   const closePhotoModal = () => {
     dispatch({ type: ACTIONS.CLOSE_PHOTO_MODAL });
@@ -101,21 +88,22 @@ const useApplicationData = () => {
   useEffect(() => {
     fetch('/api/photos')
       .then((response) => response.json())
-      .then((photos) => {
-        dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: photos });
+      .then((data) => {
+        dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: data });
       })
       .catch((error) => console.error('Error fetching photos:', error));
-  }, []);
+  }, [state.filteredPhotos]);
 
   useEffect(() => {
     fetch('/api/topics')
       .then((response) => response.json())
-      .then((topics) => {
-        dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: topics });
+      .then((data) => {
+        dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: data });
       })
       .catch((error) => console.error('Error fetching topics:', error));
   }, []);
 
+  // Retrieve photos for selected topic
   useEffect(() => {
     const topic_id = state.selectedTopic;
     if (topic_id) {
@@ -125,6 +113,7 @@ const useApplicationData = () => {
         .then((data) => {
           console.log("Fetched photos data:", data);
           dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: data });
+          dispatch ({type: ACTIONS.FILTERED_PHOTOS, payload: false})
         });
     }
   }, [state.selectedTopic]);
@@ -135,7 +124,7 @@ const useApplicationData = () => {
     setPhotoSelected,
     closePhotoModal,
     photosByTopic,
-    filteredPhotos,
+    photosByFilter,
   }
 };
 

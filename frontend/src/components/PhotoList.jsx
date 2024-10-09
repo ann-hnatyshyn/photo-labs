@@ -2,6 +2,7 @@ import React from 'react';
 import '../styles/PhotoList.scss';
 import PhotoListItem from './PhotoListItem';
 
+
 const PhotoList = ({
   photos,
   favorites,
@@ -10,9 +11,9 @@ const PhotoList = ({
   setPhotoSelected,
   filteredPhotos
 }) => {
+
   return (
     <ul className='photo-list'>
-
       {photos.map((photo) => (
         <PhotoListItem
           photo={photo}
@@ -22,14 +23,13 @@ const PhotoList = ({
           favorites={favorites}
           isFavourite={isFavourite}
           updateToFavPhotoIds={updateToFavPhotoIds}
-          setPhotoSelected={setPhotoSelected}
           location={photo.location}
           imageSource={photo.urls.regular}
           username={photo.user.username}
           profile={photo.user.profile}
+          setPhotoSelected={setPhotoSelected}
         />
       ))}
-      
     </ul>
   );
 };
